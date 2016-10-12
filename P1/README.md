@@ -60,4 +60,25 @@ export CATALINA_BASE=/opt/apache-tomcat-9.0.0.M10
 
 ### Configurar JSF
 
-* Todo
+* Crear un proyecto Maven:
+```
+mvn archetype:generate -DgroupId=prueba -DartifactId=holamundo -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+```
+* Agregar las siguientes dependencias en el fichero `pom.xml` del directorio raiz del proyecto generado:
+```xml
+<dependency>
+  <groupId>com.sun.faces</groupId>
+  <artifactId>jsf-api</artifactId>
+  <version>2.1.7</version>
+</dependency>
+<dependency>
+  <groupId>com.sun.faces</groupId>
+  <artifactId>jsf-impl</artifactId>
+  <version>2.1.7</version>
+</dependency>
+```
+* Preparar proyecto para eclpse con la siguiente orden (desde el directorio raiz del proyecto):
+```
+mvn eclipse:eclipse -Dwtpversion=2.0
+```
+* Importar proyecto en Eclipse y cambiar en `Project Properties -> Project Faces` la versión de Java a la 1.8 y en `Runtimes` añadir Apache Tomcat.
