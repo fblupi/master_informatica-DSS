@@ -2,61 +2,35 @@
 
 ### Versiones utilizadas
 
-* Ubuntu GNOME 16.04
+* Windows 10
 * Oracle JDK 8
 * Eclipse for Java EE 4.6 (Neon)
 * Maven 3.3.9
-* Apache Tomcat 9.0.0.M10
+* Apache Tomcat 9.0.0.M11
 
-### Instalar JDK de Oracle
+### Prerrequisitos
 
-```
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java8-installer
-sudo apt-get install oracle-java8-set-default
-```
-
-### Instalar Eclipse
-
-* Descargar [eclipse](http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz) y descomprimir en `/opt/`
-* (Opcional) Crear un acceso directo añadiendo un archivo con extension `.desktop` a `/usr/share/applications/` con la siguiente información:
+* Instalar el JDK de Java y comprobar la variable de entorno `JAVA_HOME` (si no se encuentra asignada, añadirla):
 
 ```
-[Desktop Entry]
-Name=Eclipse Java EE
-Type=Application
-Exec=/opt/eclipse/4.6_neon/java_ee/eclipse
-Terminal=false
-Icon=/opt/eclipse/4.6_neon/java_ee/icon.xpm
-Comment=Integrated Development Environment
-NoDisplay=false
-Categories=Development;IDE;
+echo %JAVA_HOME%
+C:\Program Files\Java\jdk1.8.0_101
 ```
+
+* Instalar Eclipse con el instalador proporcionado en la web de éste
 
 ### Instalar Maven
 
-* Descargar [maven](http://apache.uvigo.es/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz) y descomprimir en `/usr/local/`
-* Agregar al fichero `.bashrc` las siguientes líneas:
-
-```sh
-# configure maven
-export M2_HOME=/usr/local/apache-maven-3.3.9
-export M2=$M2_HOME/bin
-export MAVEN_OPTS="-Xms256m -Xmx512m"
-export PATH=$PATH:$M2
-```
+* Descargar y descomprimir Maven
+* Crear la variable de entorno `M2_HOME` y asignarle el valor de la ruta al directorio raíz donde esté Maven
+* Crear la variable de entorno `M2` y asignarle el valor `%M2_HOME%\bin`
+* Crear la variable de entorno `MAVEN_OPTS` y asignarle el valor `-Xms256m -Xmx512m`
+* Añadir a la variable de entorno `PATH` el directorio `%M2%`
 
 ### Instalar Tomcat
 
-* Descargar [tomcat](http://apache.uvigo.es/tomcat/tomcat-9/v9.0.0.M10/bin/apache-tomcat-9.0.0.M10.tar.gz) y descomprimir en `/opt/`
-* Agregar al fichero `.bashrc` las siguientes líneas:
-
-```sh
-# configure tomcat
-export CATALINA_HOME=/opt/apache-tomcat-9.0.0.M10
-export CATALINA_BASE=/opt/apache-tomcat-9.0.0.M10
-```
+* Instalar Tomcat con el instalador proporcionado en la web de éste
+* Crear la variable de entorno `CATALINA_HOME` y asignarle el valor de la ruta al directorio raíz donde esté Tomcat
 
 ### Configurar JSF
 
