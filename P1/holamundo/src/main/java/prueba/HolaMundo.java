@@ -13,14 +13,14 @@ public class HolaMundo {
 	private String mensaje;
 	
 	public HolaMundo(){
-		System.out.println("¡Hola Mundo empezado!");
+		System.out.println("Â¡Hola Mundo empezado!");
 	}
 	
 	public String getMensaje(){		
 		if (mensajeBean != null)		
 			mensaje = mensajeBean.getMensaje();
 		else
-			System.out.println("MensajeBean está a null");
+			System.out.println("MensajeBean estÃ¡ a null");
 		
 		return mensaje;
 	}
