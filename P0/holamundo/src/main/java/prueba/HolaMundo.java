@@ -9,22 +9,22 @@ import javax.faces.bean.RequestScoped;
 public class HolaMundo {
 	@ManagedProperty(value="#{mensaje}")
 	private Mensaje mensajeBean;
-	
+
 	private String mensaje;
-	
+
 	public HolaMundo(){
-		System.out.println("Â¡Hola Mundo empezado!");
+		System.out.println("fblupi dice: ¡Hola Mundo!");
 	}
-	
+
 	public String getMensaje(){		
 		if (mensajeBean != null)		
 			mensaje = mensajeBean.getMensaje();
 		else
-			System.out.println("MensajeBean estÃ¡ a null");
-		
+			System.out.println("MensajeBean está a null");
+
 		return mensaje;
 	}
-	
+
 	public void setMensajeBean (Mensaje mensajeBean){
 		this.mensajeBean = mensajeBean;
 	}

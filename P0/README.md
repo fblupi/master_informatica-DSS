@@ -6,7 +6,7 @@
 * Oracle JDK 8
 * Eclipse for Java EE 4.6 (Neon)
 * Maven 3.3.9
-* Apache Tomcat 9.0.0.M10
+* Apache Tomcat 9.0.0.M11
 
 ### Windows
 
@@ -111,6 +111,55 @@ mvn eclipse:eclipse -Dwtpversion=2.0
 ```
 * Importar proyecto en Eclipse y cambiar en `Project Properties -> Project Faces` la versión de Java a la 1.8 y en `Runtimes` añadir Apache Tomcat.
 
+* Actualizar el fichero `webapp/WEB-INF/web.xml` con el siguiente contenido:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns="http://java.sun.com/xml/ns/javaee"
+   xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+   id="WebApp_ID" version="2.5">
+
+   <welcome-file-list>
+      <welcome-file>faces/home.xhtml</welcome-file>
+   </welcome-file-list>
+
+   <!--
+      FacesServlet is main servlet responsible to handle all request.
+      It acts as central controller.
+      This servlet initializes the JSF components before the JSP is displayed.
+   -->
+
+   <servlet>
+      <servlet-name>Faces Servlet</servlet-name>
+      <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+
+   <servlet-mapping>
+      <servlet-name>Faces Servlet</servlet-name>
+      <url-pattern>/faces/*</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>Faces Servlet</servlet-name>
+      <url-pattern>*.jsf</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>Faces Servlet</servlet-name>
+      <url-pattern>*.faces</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>Faces Servlet</servlet-name>
+      <url-pattern>*.xhtml</url-pattern>
+   </servlet-mapping>
+
+</web-app>
+```
+
 ### Editar proyecto
 
 * Crear un paquete `prueba` con la estructura de subdirectorio `src/main/java` que contenga las siguientes clases:
@@ -192,8 +241,9 @@ mvn eclipse:eclipse -Dwtpversion=2.0
 
 ### Desplegar
 
-* Hacer click derecho sobre el proyecto y seleccionar `Convert to Maven Project`
+* Hacer click derecho sobre el proyecto y seleccionar `Configure -> Convert to Maven Project`
 * Hacer click derecho sobre el proyecto y seleccionar `Run as -> Maven Test`
+  * Si salta el error *No compiler is provided in this environment. Perhaps you are running on a JRE rather than a JDK?*. Ir a `Window -> Preferences -> Java -> Installed JREs` y seleccionar el JDK apropiado. Volver a realizar el `Run as -> Maven Test`.
 * Hacer click derecho sobre el proyecto y seleccionar `Run as -> Maven Install`
 * Copiar el archivo `holamundo.war` generado en el subdirectorio `target` al directorio `webapps` de Tomcat y ejecutar `startup.sh` o `startup.bat` (dependiendo del S.O. utilizado).
-* Comprobar entrando en la siguiente dirección: http://localhost:8080/holamundo/home.jsf
+* Comprobar entrando en la siguiente dirección: http://localhost:8080/holamundo/home.jsf 
