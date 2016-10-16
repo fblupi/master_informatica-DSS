@@ -9,9 +9,7 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "controladorNavegacion", eager = true)
 @RequestScoped
 public class ControladorNavegacion implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
-
 	
 	@ManagedProperty(value="#{param.pageId}")
 	private String pageId;
