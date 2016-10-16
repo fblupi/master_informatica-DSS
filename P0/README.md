@@ -17,20 +17,20 @@
 echo %JAVA_HOME%
 C:\Program Files\Java\jdk1.8.0_101
 ```
-* Instalar Eclipse con el instalador proporcionado en la web de éste
+* Instalar Eclipse con el instalador proporcionado en la web de éste.
 
 #### Instalar Maven
 
-* Descargar y descomprimir Maven
-* Crear la variable de entorno `M2_HOME` y asignarle el valor de la ruta al directorio raíz donde esté Maven
-* Crear la variable de entorno `M2` y asignarle el valor `%M2_HOME%\bin`
-* Crear la variable de entorno `MAVEN_OPTS` y asignarle el valor `-Xms256m -Xmx512m`
-* Añadir a la variable de entorno `PATH` el directorio `%M2%`
+* Descargar y descomprimir Maven.
+* Crear la variable de entorno `M2_HOME` y asignarle el valor de la ruta al directorio raíz donde esté Maven.
+* Crear la variable de entorno `M2` y asignarle el valor `%M2_HOME%\bin`.
+* Crear la variable de entorno `MAVEN_OPTS` y asignarle el valor `-Xms256m -Xmx512m`.
+* Añadir a la variable de entorno `PATH` el directorio `%M2%`.
 
 #### Instalar Tomcat
 
-* Instalar Tomcat con el instalador proporcionado en la web de éste
-* Crear la variable de entorno `CATALINA_HOME` y asignarle el valor de la ruta al directorio raíz donde esté Tomcat
+* Instalar Tomcat con el instalador proporcionado en la web de éste.
+* Crear la variable de entorno `CATALINA_HOME` y asignarle el valor de la ruta al directorio raíz donde esté Tomcat.
 
 ### Linux
 
@@ -46,7 +46,7 @@ sudo apt-get install oracle-java8-set-default
 
 #### Instalar Eclipse
 
-* Descargar [eclipse](http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz) y descomprimir en `/opt/`
+* Descargar [eclipse](http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz) y descomprimir en `/opt/`.
 * (Opcional) Crear un acceso directo añadiendo un archivo con extension `.desktop` a `/usr/share/applications/` con la siguiente información:
 ```
 [Desktop Entry]
@@ -62,7 +62,7 @@ Categories=Development;IDE;
 
 #### Instalar Maven
 
-* Descargar [maven](http://apache.uvigo.es/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz) y descomprimir en `/usr/local/`
+* Descargar [maven](http://apache.uvigo.es/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz) y descomprimir en `/usr/local/`.
 * Agregar al fichero `.bashrc` las siguientes líneas:
 ```sh
 # configure maven
@@ -74,7 +74,7 @@ export PATH=$PATH:$M2
 
 #### Instalar Tomcat
 
-* Descargar [tomcat](http://apache.uvigo.es/tomcat/tomcat-9/v9.0.0.M11/bin/apache-tomcat-9.0.0.M11.tar.gz) y descomprimir en `/opt/`
+* Descargar [tomcat](http://apache.uvigo.es/tomcat/tomcat-9/v9.0.0.M11/bin/apache-tomcat-9.0.0.M11.tar.gz) y descomprimir en `/opt/`.
 * Agregar al fichero `.bashrc` las siguientes líneas:
 ```sh
 # configure tomcat
@@ -238,12 +238,13 @@ mvn eclipse:eclipse -Dwtpversion=2.0
 	</body>
 </html>
 ```
+* Opacionalmente se puede eliminar el fichero `index.jsp`.
 
 ### Desplegar
 
-* Hacer click derecho sobre el proyecto y seleccionar `Configure -> Convert to Maven Project`
-* Hacer click derecho sobre el proyecto y seleccionar `Run as -> Maven Test`
+* Hacer click derecho sobre el proyecto y seleccionar `Configure -> Convert to Maven Project`.
+* Hacer click derecho sobre el proyecto y seleccionar `Run as -> Maven Test`.
   * Si salta el error *No compiler is provided in this environment. Perhaps you are running on a JRE rather than a JDK?*. Ir a `Window -> Preferences -> Java -> Installed JREs` y seleccionar el JDK apropiado. Volver a realizar el `Run as -> Maven Test`.
-* Hacer click derecho sobre el proyecto y seleccionar `Run as -> Maven Install`
+* Hacer click derecho sobre el proyecto y seleccionar `Run as -> Maven Install`.
 * Copiar el archivo `holamundo.war` generado en el subdirectorio `target` al directorio `webapps` de Tomcat y ejecutar `startup.sh` o `startup.bat` (dependiendo del S.O. utilizado).
-* Comprobar entrando en la siguiente dirección: http://localhost:8080/holamundo/home.jsf 
+* Comprobar entrando en la siguiente dirección: http://localhost:8080/holamundo/home.jsf.
