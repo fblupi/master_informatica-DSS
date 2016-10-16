@@ -1,13 +1,48 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-	<head>
-		<title>Ejemplo de prueba con JSF!</title>
-	</head>
-	<body>
-		#{holaMundo.mensaje}
-	</body>
+
+	<h:body>
+		<h2>Navegación Implícita</h2>
+		<hr />
+		<h:form>
+			<h3>Utilizando un "Managed Bean"</h3>
+			<h:commandButton action="#{controladorNavegacion.moverHaciaPagina1}" value="Página 1" />
+			<h3>Utilizando la salida JSF</h3>
+			<h:commandButton action="pagina2" value="Página 2" />
+		</h:form>
+		<br/>
+		<h2>Navegación Condicional</h2>
+		<hr />
+		<h:form>
+			<h:commandLink action="#{controladorNavegacion.mostrarPagina}" value="Página 1 ">
+				<f:param name="pageId" value="1" />
+			</h:commandLink>
+			<h:commandLink action="#{controladorNavegacion.mostrarPagina}" value="Página 2 ">
+				<f:param name="pageId" value="2" />
+			</h:commandLink>
+			<h:commandLink action="#{controladorNavegacion.mostrarPagina}" value="Volver a Inicio ">
+				<f:param name="pageId" value="3" />
+			</h:commandLink>
+		</h:form>
+		<br/>
+		<h2>Utilizando Regla de Navegación de "faces-config"</h2>
+		<hr />
+		<h:form>
+			<h:commandLink action="#{controladorNavegacion.procesarPagina1}" value="Página 1 " />
+			<h:commandLink action="#{controladorNavegacion.procesarPagina2}" value="Página 2 " />        
+		</h:form>
+		<br/>
+		<h2>Navegación Hacia Adelante vs Redireccionamiento</h2>
+		<hr />
+		<h:form>
+			<h3>Hacia Adelante</h3>
+			<h:commandButton action="pagina1" value="Página 1" />
+			<h3>Redireccionamiento</h3>
+			<h:commandButton action="pagina1?faces-redirect=true" value="Página 1" />
+		</h:form>
+	</h:body>
 </html>
