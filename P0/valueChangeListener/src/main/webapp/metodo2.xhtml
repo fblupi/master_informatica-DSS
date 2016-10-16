@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+		<title>Tutorial gestión eventos con JSF</title>		   
+	</h:head>
+	<h:body> 
+	
+		<h2>Ejemplo de utilización de valueChangeListener</h2>
+		<h:form>
+			<h2>Interfaz ValueChangeListener</h2>
+			<hr/>
+			<h:panelGrid columns="2">
+				Local seleccionado:
+				<h:selectOneMenu value="#{datosUsuario.paisSeleccionado}" onchange="submit()">
+				   <f:valueChangeListener type="prueba.CambioLocalListener" />
+				   <f:selectItems value="#{datosUsuario.paises}" />
+				</h:selectOneMenu>
+				Nombre de País:
+				<h:outputText id="pais1" value="#{datosUsuario.paisSeleccionado}" size="20" />		
+			</h:panelGrid>
+			<hr/>
+			<h:commandButton action="home?faces-redirect=true" value="Usando Ligadura de método" />
+		</h:form>
+	 </h:body>
+</html>
