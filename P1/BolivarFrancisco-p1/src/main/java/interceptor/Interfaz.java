@@ -6,7 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class Interfaz {
-	private String url = "http://localhost:8080/P1/home.xhtml";
+	private String url = "http://localhost:8080/BolivarFrancisco-p1/home.xhtml";
 	
 	public void ejecutar(double numeroVueltas) throws IOException, URISyntaxException {
 		System.out.println("Ejecutando interfaz");
