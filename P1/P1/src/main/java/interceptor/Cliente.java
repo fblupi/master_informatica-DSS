@@ -1,5 +1,8 @@
 package interceptor;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 public class Cliente {
 	private GestorFiltros gestorFiltros;
 	
@@ -7,7 +10,7 @@ public class Cliente {
 		this.gestorFiltros = gestorFiltros;
 	}
 	
-	public void enviarPeticion(double numeroVueltas) {
+	public void enviarPeticion(double numeroVueltas) throws IOException, URISyntaxException {
 		gestorFiltros.ejecutar(numeroVueltas);
 	}
 }
