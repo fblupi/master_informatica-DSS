@@ -4,7 +4,7 @@
 
 ### I. Ejercicio de especificación de interfaz de un sistema de matriculación en una universdidad
 
-Resultado
+!["Interfaz Enrollment"](IEnrollment.png)
 
 ### II. Ejercicio de especificación utilizando OCL de la operación `getStudentDetails(...)`
 
