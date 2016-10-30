@@ -67,7 +67,7 @@ public class Cliente extends JFrame implements ActionListener{
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	final Pattern pattern = Pattern.compile(EXPR_REG_EMAIL);
 	
-	public static String urlString = "http://localhost:8080/P2/ListaCorreosServlet";
+	public static String urlString = "http://localhost:8080/BolivarFrancisco-p2/ListaCorreosServlet";
 
 	private TablaUsuarios modeloTablaUsuarios;
 	
@@ -90,7 +90,7 @@ public class Cliente extends JFrame implements ActionListener{
 	}
 	//Ahora crearemos la ventana
 	public Cliente() {
-		setTitle("Desarrollo de Sistemas Basados en Componentes y Servicios-2015. Pr\u00E1ctica 2");
+		setTitle("Desarrollo de Sistemas Basados en Componentes y Servicios-2016. Pr\u00E1ctica 2");
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 300);

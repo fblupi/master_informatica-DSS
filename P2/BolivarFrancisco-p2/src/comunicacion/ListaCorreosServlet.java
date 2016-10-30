@@ -1,6 +1,8 @@
 package comunicacion;
 
 import java.io.*;
+import java.util.List;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -12,24 +14,59 @@ public class ListaCorreosServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest peticion, HttpServletResponse respuesta) throws ServletException, IOException {
-		doPost(peticion, respuesta);
+		ObjectOutputStream oos = new ObjectOutputStream(respuesta.getOutputStream());
+		List<Usuario> usuarios = BDUsuario.listarUsuarios();
+		oos.writeObject(usuarios);
+		oos.flush();
+		oos.close();
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest peticion, HttpServletResponse respuesta) throws ServletException, IOException {
-		String url = "/index.html";
-		// Obtener la acción a partir de peticion (getParameter("action");
+		String accion = peticion.getParameter("action");
+		String nombre = peticion.getParameter("nombre");
+		String apellido = peticion.getParameter("apellido");
+		String email = peticion.getParameter("email");
 		
-		// Realizar la accion y asignar el URL a la pagina apropiada
-			// almacenar los datos en el objeto Usuario
+		ObjectOutputStream oos = new ObjectOutputStream(respuesta.getOutputStream());
 		
-			// validar los parametros utilizando los metodos BDUsuario; si existe la direccion de email en la base de datos, mostrar un mensaje y pedir otra direccion
-			// Insertar los datos del usuario
-			peticion.setAttribute("user", user);
-			peticion.setAttribute("message", message);
-			
-		getServletContext()
-			.getRequestDispatcher(url)
-			.forward(peticion, respuesta);
+		switch (accion) {
+		case "aniadirUsuario":
+			if (!BDUsuario.existeEmail(email)) {
+				BDUsuario.insertar(new Usuario(nombre, apellido, email));
+				oos.writeInt(0);
+				oos.writeObject("Usuario aniadido correctamente.");
+			} else {
+				oos.writeInt(1);
+				oos.writeObject("Ya existe un usuario con el email " + email + ".");
+			}
+			break;
+		case "actualizarUsuario":
+			if (BDUsuario.existeEmail(email)) {
+				BDUsuario.actualizar(new Usuario(nombre, apellido, email));
+				oos.writeInt(0);
+				oos.writeObject("Usuario actualizado correctamente.");
+			} else {
+				oos.writeInt(1);
+				oos.writeObject("Ya existe un usuario con el email " + email + ".");
+			}
+			break;
+		case "eliminarUsuario":
+			if (BDUsuario.existeEmail(email)) {
+				BDUsuario.eliminar(new Usuario(nombre, apellido, email));
+				oos.writeInt(0);
+				oos.writeObject("Usuario eliminado correctamente.");
+			} else {
+				oos.writeInt(1);
+				oos.writeObject("Ya existe un usuario con el email " + email + ".");
+			}
+			break;
+		default: // por defecto lista usuarios
+			List<Usuario> usuarios = BDUsuario.listarUsuarios();
+			oos.writeObject(usuarios);
+		}
+		
+		oos.flush();
+		oos.close();
 	}
 }

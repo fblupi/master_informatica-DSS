@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -18,7 +20,7 @@ public class BDUsuario {
 		factoria = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = factoria.createEntityManager();
 
-		if(!existeEmail(usuario.getEmail())) {
+		if (!existeEmail(usuario.getEmail())) {
 			em.getTransaction().begin();
 			em.persist(usuario);
 			em.getTransaction().commit();
@@ -35,7 +37,7 @@ public class BDUsuario {
 		factoria = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = factoria.createEntityManager();
 
-		if(existeEmail(usuario.getEmail())) {
+		if (existeEmail(usuario.getEmail())) {
 			Query q = em
 					.createQuery("SELECT u from Usuario WHERE u.email LIKE :email")
 					.setParameter("email", usuario.getEmail());
@@ -92,9 +94,9 @@ public class BDUsuario {
 
 	/**
 	 * Si el usuario con el email especificado existe, devuelve true; si no, se
-	 * produce una excepción de no resultados y devuelve false
+	 * produce una excepcion de no resultados y devuelve false
 	 * @param email
-	 * @return
+	 * @return el usuario con el email especificado existe o no
 	 */
 	public static boolean existeEmail(String email) {
 		factoria = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
@@ -110,5 +112,19 @@ public class BDUsuario {
 		} finally {
 			em.close();
 		}
+	}
+	
+	/**
+	 * Devuelve todos los usuarios de la base de datos
+	 * @return lista con todos los usuarios de la base de datos
+	 */
+	public static List<Usuario> listarUsuarios() {
+		factoria = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		EntityManager em = factoria.createEntityManager();
+		Query q = em.createQuery("SELECT u from Usuario u");
+		List<Usuario> resultado = q.getResultList();
+		em.close();
+		
+		return resultado;
 	}
 }
