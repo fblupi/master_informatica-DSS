@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="usuario" transaction-type="RESOURCE_LOCAL">
+	    <class>modelo.Usuario</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:/home/fblupi/.databases/P2;create=true" />
+			<property name="javax.persistence.jdbc.user" value="test" />
+			<property name="javax.persistence.jdbc.password" value="test" />
+			<!-- Connection Pool -->
+			<property name="eclipselink.connection-pool.default.initial" value="1" />
+			<property name="eclipselink.connection-pool.node2.min" value="16"/>
+			<property name="eclipselink.connection-pool.node2.max" value="16"/>
+			<property name="eclipselink.connection-pool.node2.url" value="jdbc:derby:/home/fblupi/.databases/P2;create=true"/>
+			<!-- EclipseLink debe crear este esquema de base de datos automaticamente -->
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="both" />
+		</properties>
+	</persistence-unit>
+</persistence>
