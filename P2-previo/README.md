@@ -138,178 +138,178 @@ public class Principal {
 * Crear el paquete `jpa.eclipselink.modelo` con las siguientes clases:
   * Familia
 
-  ```java
-  package jpa.eclipselink.modelo;
+```java
+package jpa.eclipselink.modelo;
 
-  import java.util.ArrayList;
-  import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
-  import javax.persistence.Entity;
-  import javax.persistence.GeneratedValue;
-  import javax.persistence.GenerationType;
-  import javax.persistence.Id;
-  import javax.persistence.OneToMany;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-  @Entity
-  public class Familia {
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private int id;
-    private String descripcion;
+@Entity
+public class Familia {
+  @Id
+  @GeneratedValue(strategy = GenerationType.TABLE)
+  private int id;
+  private String descripcion;
 
-    @OneToMany(mappedBy = "familia")
-    private final List<Persona> miembros = new ArrayList<Persona>();
+  @OneToMany(mappedBy = "familia")
+  private final List<Persona> miembros = new ArrayList<Persona>();
 
-    public int getId() {
-      return id;
-    }
-
-    public void setId(int id) {
-      this.id = id;
-    }
-
-    public String getDescripcion() {
-      return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-      this.descripcion = descripcion;
-    }
-
-    public List<Persona> getMiembros() {
-      return miembros;
-    }
-
+  public int getId() {
+    return id;
   }
-  ```
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getDescripcion() {
+    return descripcion;
+  }
+
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
+
+  public List<Persona> getMiembros() {
+    return miembros;
+  }
+
+}
+```
 
   * Persona
 
-  ```java
-  package jpa.eclipselink.modelo;
+```java
+package jpa.eclipselink.modelo;
 
-  import java.util.ArrayList;
-  import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
-  import javax.persistence.Entity;
-  import javax.persistence.GeneratedValue;
-  import javax.persistence.GenerationType;
-  import javax.persistence.Id;
-  import javax.persistence.ManyToOne;
-  import javax.persistence.OneToMany;
-  import javax.persistence.Transient;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
-  @Entity
-  public class Persona {
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private String id;
-    private String nombre;
-    private String apellidos;
+@Entity
+public class Persona {
+  @Id
+  @GeneratedValue(strategy = GenerationType.TABLE)
+  private String id;
+  private String nombre;
+  private String apellidos;
 
-    private Familia familia;
+  private Familia familia;
 
-    private String campoSinSentido = "";
+  private String campoSinSentido = "";
 
-    private List<Empleo> listaEmpleos = new ArrayList<Empleo>();
+  private List<Empleo> listaEmpleos = new ArrayList<Empleo>();
 
-    public String getId() {
-      return id;
-    }
-
-    public void setId(String id) {
-      this.id = id;
-    }
-
-    public String getNombre() {
-      return nombre;
-    }
-
-    public void setNombre(String nombre) {
-      this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-      return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-      this.apellidos = apellidos;
-    }
-
-    @ManyToOne
-    public Familia getFamilia() {
-      return familia;
-    }
-
-    public void setFamilia(Familia familia) {
-      this.familia = familia;
-    }
-
-    @Transient
-    public String getCampoSinSentido() {
-      return campoSinSentido;
-    }
-
-    public void setCampoSinSentido(String campoSinSentido) {
-      this.campoSinSentido = campoSinSentido;
-    }
-
-    @OneToMany
-    public List<Empleo> getListaEmpleos() {
-      return this.jobList;
-    }
-
-    public void setListaEmpleos(List<Empleo> listaEmpleos) {
-      this.listaEmpleos = listaEmpleos;
-    }
-
+  public String getId() {
+    return id;
   }
-  ```
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public String getApellidos() {
+    return apellidos;
+  }
+
+  public void setApellidos(String apellidos) {
+    this.apellidos = apellidos;
+  }
+
+  @ManyToOne
+  public Familia getFamilia() {
+    return familia;
+  }
+
+  public void setFamilia(Familia familia) {
+    this.familia = familia;
+  }
+
+  @Transient
+  public String getCampoSinSentido() {
+    return campoSinSentido;
+  }
+
+  public void setCampoSinSentido(String campoSinSentido) {
+    this.campoSinSentido = campoSinSentido;
+  }
+
+  @OneToMany
+  public List<Empleo> getListaEmpleos() {
+    return this.listaEmpleos;
+  }
+
+  public void setListaEmpleos(List<Empleo> listaEmpleos) {
+    this.listaEmpleos = listaEmpleos;
+  }
+
+}
+```
 
   * Empleo
 
-  ```java
-  package jpa.eclipselink.modelo;
+```java
+package jpa.eclipselink.modelo;
 
-  import javax.persistence.Entity;
-  import javax.persistence.GeneratedValue;
-  import javax.persistence.GenerationType;
-  import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-  @Entity
-  public class Empleo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private int id;
-    private double salario;
-    private String descripcionTrabajo;
+@Entity
+public class Empleo {
+  @Id
+  @GeneratedValue(strategy = GenerationType.TABLE)
+  private int id;
+  private double salario;
+  private String descripcionTrabajo;
 
-    public int getId() {
-      return id;
-    }
-
-    public void setId(int id) {
-      this.id = id;
-    }
-
-    public double getSalerio() {
-      return salario;
-    }
-
-    public void setSalario(double salario) {
-      this.salario = salario;
-    }
-
-    public String getDescripcionTrabajo() {
-      return descripcionTrabajo;
-    }
-
-    public void setDescripcionTrabajo(String descripcionTrabajo) {
-      this.descripcionTrabajo = descripcionTrabajo;
-    }
+  public int getId() {
+    return id;
   }
-  ```
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public double getSalerio() {
+    return salario;
+  }
+
+  public void setSalario(double salario) {
+    this.salario = salario;
+  }
+
+  public String getDescripcionTrabajo() {
+    return descripcionTrabajo;
+  }
+
+  public void setDescripcionTrabajo(String descripcionTrabajo) {
+    this.descripcionTrabajo = descripcionTrabajo;
+  }
+}
+```
 
 * Crear el subdirectorio `META-INF` en el directorio `src` y crear el fichero `persistence.xml`:
 
@@ -336,7 +336,7 @@ public class Principal {
 </persistence>
 ```
 
-* Crear los test en JUnit:
+* Importar la librería JUnit 4 y crear los test en JUnit:
 
 ```java
 package jpa.eclipselink.principal;
@@ -401,7 +401,7 @@ public class JpaTest {
   public void comprobarPersonas() {
     // Ahora vamos a comprobar la base de datos para ver si las entradas que hemos creado estan alli
     // Nos crearemos un gestor de entidades "fresco"
-    EntityManager em = factory.createEntityManager();
+    EntityManager em = factoria.createEntityManager();
 
     // Realizaremos una consulta simple que consistira en seleccionar a todas las personas
     Query q = em.createQuery("select m from Persona m");
@@ -415,20 +415,20 @@ public class JpaTest {
   @Test
   public void comprobarFamilias() {
     // Nos crearemos un gestor de entidades "fresco"
-    EntityManager em = factory.createEntityManager();
+    EntityManager em = factoria.createEntityManager();
     // Recorrer cada una de las entidades y mostrar cada uno de sus campos asi como la fecha de creacion
     Query q = em.createQuery("select f from Familia f");
 
     // Deberiamos tener una familia con 20 personas
     assertTrue(q.getResultList().size() == 1);
-    assertTrue(((Familia) q.getSingleResult()).getMembers().size() == 20);
+    assertTrue(((Familia) q.getSingleResult()).getMiembros().size() == 20);
     em.close();
   }
 
   @Test(expected = javax.persistence.NoResultException.class)
   public void eliminarPersona() {
     // Nos crearemos un gestor de entidades "fresco"
-    EntityManager em = factory.createEntityManager();
+    EntityManager em = factoria.createEntityManager();
     // Comenzar una nueva transaccion local de tal forma que pueda persistir como una nueva entidad
     em.getTransaction().begin();
     // Crear la consulta necesaria eliminar la persona de nombre y apellidos indicados despues
