@@ -26,7 +26,7 @@
 ### Ejemplo básico
 
 * Crear un nuevo proyecto java nombrado `jpa.simple`.
-* Crear un subdirectorio `lib` donde se ubicarán los JAR (http://www.vogella.com/tutorials/Eclipse/article.html#classpath):
+* Crear un subdirectorio `lib` donde se ubicarán los JAR (http://www.vogella.com/tutorials/Eclipse/article.html#using-jars-libraries-in-eclipse):
   * `eclipselink.jar` que se encuentra en `/usr/local/eclipselink/jlib/`
   * `javax.persistence_2.1.1.v201509150925.jar` que se encuentra en `/usr/local/eclipselink/jlib/jpa/`
   * `derby.jar` que se encuentra en `/usr/local/db-derby-10.13.1.1-bin/lib/`
@@ -131,7 +131,7 @@ public class Principal {
 ### Ejemplo entidad relación
 
 * Crear un nuevo proyecto java nombrado `jpa.eclipselink`.
-* Crear un subdirectorio `lib` donde se ubicarán los JAR (http://www.vogella.com/tutorials/Eclipse/article.html#classpath):
+* Crear un subdirectorio `lib` donde se ubicarán los JAR (http://www.vogella.com/tutorials/Eclipse/article.html#using-jars-libraries-in-eclipse):
   * `eclipselink.jar` que se encuentra en `/usr/local/eclipselink/jlib/`
   * `javax.persistence_2.1.1.v201509150925.jar` que se encuentra en `/usr/local/eclipselink/jlib/jpa/`
   * `derby.jar` que se encuentra en `/usr/local/db-derby-10.13.1.1-bin/lib/`
