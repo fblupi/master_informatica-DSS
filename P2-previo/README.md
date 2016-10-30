@@ -90,7 +90,7 @@ public class Completo {
 * Crear la siguiente clase:
 
 ```java
-package jpa.simple.main;
+package jpa.simple.principal;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -100,7 +100,7 @@ import javax.persistence.Query;
 import jpa.simple.modelo.Completo;
 
 public class Principal {
-  private static final String PERSISTENCE_UNIT_NAME = "tutorialJPA";
+  private static final String PERSISTENCE_UNIT_NAME = "completos";
   private static EntityManagerFactory factoria;
 
   public static void main(String[] args) {
