@@ -7,9 +7,17 @@ import javax.servlet.http.*;
 import modelo.Usuario;
 import modelo.BDUsuario;
 
-public class ListaCorreosServlet extends HttpServlet {	
+public class ListaCorreosServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest peticion, HttpServletResponse respuesta) throws ServletException, IOException {
+		doPost(peticion, respuesta);
+	}
+	
 	@Override
 	protected void doPost(HttpServletRequest peticion, HttpServletResponse respuesta) throws ServletException, IOException {
+		String url = "/index.html";
 		// Obtener la acción a partir de peticion (getParameter("action");
 		
 		// Realizar la accion y asignar el URL a la pagina apropiada
@@ -17,8 +25,8 @@ public class ListaCorreosServlet extends HttpServlet {
 		
 			// validar los parametros utilizando los metodos BDUsuario; si existe la direccion de email en la base de datos, mostrar un mensaje y pedir otra direccion
 			// Insertar los datos del usuario
-			request.setAttribute("user", user);
-			request.setAttribute("message", message);
+			peticion.setAttribute("user", user);
+			peticion.setAttribute("message", message);
 			
 		getServletContext()
 			.getRequestDispatcher(url)
