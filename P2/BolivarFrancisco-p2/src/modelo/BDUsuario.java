@@ -38,9 +38,8 @@ public class BDUsuario {
 		EntityManager em = factoria.createEntityManager();
 
 		if (existeEmail(usuario.getEmail())) {
-			Query q = em
-					.createQuery("SELECT u from Usuario WHERE u.email LIKE :email")
-					.setParameter("email", usuario.getEmail());
+			Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email");
+			q.setParameter("email", usuario.getEmail());
 			Usuario resultado = new Usuario((Usuario) q.getSingleResult());
 			em.getTransaction().begin();
 			resultado.setNombre(usuario.getNombre());
@@ -59,9 +58,8 @@ public class BDUsuario {
 		EntityManager em = factoria.createEntityManager();
 
 		if (existeEmail(usuario.getEmail())) {
-			Query q = em
-					.createQuery("SELECT u from Usuario WHERE u.email LIKE :email")
-					.setParameter("email", usuario.getEmail());
+			Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email");
+			q.setParameter("email", usuario.getEmail());
 			Usuario resultado = new Usuario((Usuario) q.getSingleResult());
 			em.getTransaction().begin();
 			em.remove(resultado);
@@ -79,12 +77,12 @@ public class BDUsuario {
 	public static Usuario seleccionarUsuario(String email) {
 		factoria = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = factoria.createEntityManager();
+		
 		Usuario resultado = null;
 
 		if (existeEmail(email)) {
-			Query q = em
-					.createQuery("SELECT u from Usuario WHERE u.email LIKE :email")
-					.setParameter("email", email);
+			Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email");
+			q.setParameter("email", email);
 			resultado = new Usuario((Usuario) q.getSingleResult());
 			em.close();
 		}
@@ -101,9 +99,10 @@ public class BDUsuario {
 	public static boolean existeEmail(String email) {
 		factoria = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = factoria.createEntityManager();
-		Query q = em
-				.createQuery("SELECT u from Usuario WHERE u.email LIKE :email")
-				.setParameter("email", email);
+		
+		Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email");
+		q.setParameter("email", email);
+		
 		try {
 			q.getSingleResult();
 			return true;
@@ -121,7 +120,9 @@ public class BDUsuario {
 	public static List<Usuario> listarUsuarios() {
 		factoria = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = factoria.createEntityManager();
-		Query q = em.createQuery("SELECT u from Usuario u");
+		
+		Query q = em.createQuery("SELECT u FROM Usuario u");
+		
 		List<Usuario> resultado = q.getResultList();
 		em.close();
 		
