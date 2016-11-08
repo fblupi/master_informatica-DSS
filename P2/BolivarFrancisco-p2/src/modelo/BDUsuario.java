@@ -62,9 +62,6 @@ public class BDUsuario {
 		if (existeEmail(usuario.getEmail())) {
 			Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email");
 			q.setParameter("email", usuario.getEmail());
-			
-			Usuario resultado = new Usuario((Usuario) q.getSingleResult());
-			
 			em.getTransaction().begin();
 			q = em.createQuery("DELETE FROM Usuario WHERE email = :email");
 			q.setParameter("email", usuario.getEmail());
@@ -129,6 +126,7 @@ public class BDUsuario {
 		
 		Query q = em.createQuery("SELECT u FROM Usuario u");
 		
+		@SuppressWarnings("unchecked")
 		List<Usuario> resultado = q.getResultList();
 		em.close();
 		
