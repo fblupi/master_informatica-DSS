@@ -41,11 +41,12 @@ public class BDUsuario {
 			Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email");
 			q.setParameter("email", usuario.getEmail());
 			
-			Usuario resultado = new Usuario((Usuario) q.getSingleResult());
-			
-			em.getTransaction().begin();
+			Usuario resultado = (Usuario) q.getSingleResult();
 			resultado.setNombre(usuario.getNombre());
 			resultado.setApellido(usuario.getApellido());
+			
+			em.getTransaction().begin();
+			em.merge(resultado);
 			em.getTransaction().commit();
 			em.close();
 		}
@@ -62,10 +63,11 @@ public class BDUsuario {
 		if (existeEmail(usuario.getEmail())) {
 			Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email");
 			q.setParameter("email", usuario.getEmail());
+
+			Usuario resultado = (Usuario) q.getSingleResult();
+			
 			em.getTransaction().begin();
-			q = em.createQuery("DELETE FROM Usuario WHERE email = :email");
-			q.setParameter("email", usuario.getEmail());
-			q.executeUpdate();
+			em.remove(resultado);
 			em.getTransaction().commit();			
 			em.close();
 		}
@@ -86,7 +88,7 @@ public class BDUsuario {
 		if (existeEmail(email)) {
 			Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email");
 			q.setParameter("email", email);
-			resultado = new Usuario((Usuario) q.getSingleResult());
+			resultado = (Usuario) q.getSingleResult();
 			em.close();
 		}
 
