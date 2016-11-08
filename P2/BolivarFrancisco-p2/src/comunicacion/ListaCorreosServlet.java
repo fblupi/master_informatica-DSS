@@ -14,11 +14,7 @@ public class ListaCorreosServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest peticion, HttpServletResponse respuesta) throws ServletException, IOException {
-		ObjectOutputStream oos = new ObjectOutputStream(respuesta.getOutputStream());
-		List<Usuario> usuarios = BDUsuario.listarUsuarios();
-		oos.writeObject(usuarios);
-		oos.flush();
-		oos.close();
+		doPost(peticion, respuesta);
 	}
 	
 	@Override
