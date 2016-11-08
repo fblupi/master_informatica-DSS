@@ -13,12 +13,12 @@ import modelo.BDUsuario;
 import modelo.Usuario;
 
 public class JpaTest {	
-	private String nombre1 = "Fran";
-	private String nombre2 = "Pepe";
-	private String apellido1 = "Bolivar";
-	private String apellido2 = "Lopez";
-	private String email1 = "fblupi@correo.ugr.es";
-	private String email2 = "pepelopez@correo.ugr.es";
+	private String nombre = "Fran";
+	private String otroNombre = "Pepe";
+	private String apellido = "Bolivar";
+	private String otroApellido = "Lopez";
+	private String email = "fblupi@correo.ugr.es";
+	private String otroEmail = "pepelopez@correo.ugr.es";
 	
 	@Before
 	public void setUp() {
@@ -26,52 +26,63 @@ public class JpaTest {
 		for (Usuario usuario: usuarios) {
 			BDUsuario.eliminar(usuario);
 		}
-		BDUsuario.insertar(new Usuario(nombre1, apellido1, email1));
+		Usuario usuario = new Usuario();
+		usuario.setNombre(nombre);
+		usuario.setApellido(apellido);
+		usuario.setEmail(email);
+		BDUsuario.insertar(usuario);
 	}
 	
 	@Test
 	public void existeEmail() {
-		assertTrue(BDUsuario.existeEmail(email1));
-		assertFalse(BDUsuario.existeEmail(email2));
+		assertTrue(BDUsuario.existeEmail(email));
+		assertFalse(BDUsuario.existeEmail(otroEmail));
 	}
 	
 	@Test
 	public void seleccionarUsuario() {
-		Usuario usuario = BDUsuario.seleccionarUsuario(email1);
-		assertEquals(usuario.getNombre(), nombre1);
-		assertEquals(usuario.getApellido(), apellido1);
-		assertEquals(usuario.getEmail(), email1);
-		usuario = BDUsuario.seleccionarUsuario(email2);
+		Usuario usuario = BDUsuario.seleccionarUsuario(email);
+		assertEquals(usuario.getNombre(), nombre);
+		assertEquals(usuario.getApellido(), apellido);
+		assertEquals(usuario.getEmail(), email);
+		usuario = BDUsuario.seleccionarUsuario(otroEmail);
 		assertEquals(usuario, null);
 	}
 
 	@Test
 	public void insertar() {
-		assertFalse(BDUsuario.existeEmail(email2));
-		BDUsuario.insertar(new Usuario(nombre2, apellido2, email2));
-		assertTrue(BDUsuario.existeEmail(email2));
+		assertFalse(BDUsuario.existeEmail(otroEmail));
+		Usuario usuario = new Usuario();
+		usuario.setNombre(otroNombre);
+		usuario.setApellido(otroApellido);
+		usuario.setEmail(otroEmail);
+		BDUsuario.insertar(usuario);
+		assertTrue(BDUsuario.existeEmail(otroEmail));
 	}
 	
 	@Test
 	public void actualizar() {
-		Usuario usuario = BDUsuario.seleccionarUsuario(email1);
-		assertEquals(usuario.getNombre(), nombre1);
-		assertEquals(usuario.getApellido(), apellido1);
-		usuario.setNombre(nombre2);
+		Usuario usuario = BDUsuario.seleccionarUsuario(email);
+		assertEquals(usuario.getNombre(), nombre);
+		assertEquals(usuario.getApellido(), apellido);
+		usuario.setNombre(otroNombre);
 		BDUsuario.actualizar(usuario);
-		assertEquals(usuario.getNombre(), nombre2);
-		assertEquals(usuario.getApellido(), apellido1);
-		usuario.setApellido(apellido2);
+		assertEquals(usuario.getNombre(), otroNombre);
+		assertEquals(usuario.getApellido(), apellido);
+		usuario.setApellido(otroApellido);
 		BDUsuario.actualizar(usuario);
-		assertEquals(usuario.getNombre(), nombre2);
-		assertEquals(usuario.getApellido(), apellido2);
+		assertEquals(usuario.getNombre(), otroNombre);
+		assertEquals(usuario.getApellido(), otroApellido);
 	}
 	
 	@Test
 	public void eliminar() {
-		assertTrue(BDUsuario.existeEmail(email1));
-		BDUsuario.eliminar(new Usuario(nombre1, apellido1, email1));
-		assertFalse(BDUsuario.existeEmail(email1));
+		assertTrue(BDUsuario.existeEmail(email));Usuario usuario = new Usuario();
+		usuario.setNombre(nombre);
+		usuario.setApellido(apellido);
+		usuario.setEmail(email);
+		BDUsuario.eliminar(usuario);
+		assertFalse(BDUsuario.existeEmail(email));
 	}
 	
 	@Test

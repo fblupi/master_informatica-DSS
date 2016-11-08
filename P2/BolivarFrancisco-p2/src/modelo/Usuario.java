@@ -24,18 +24,6 @@ public class Usuario implements Serializable {
 	public Usuario() {
 		nombre = apellido = email = "";
 	}
-	
-	/**
-	 * Constructo con parametros. Crea un usuario con los parametros de entrada
-	 * @param nombre
-	 * @param apellido
-	 * @param email
-	 */
-	public Usuario(String nombre, String apellido, String email) {
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-	}
 
 	/**
 	 * Constructor por copia. Copia los datos de un usuario y crea un usuario con estos

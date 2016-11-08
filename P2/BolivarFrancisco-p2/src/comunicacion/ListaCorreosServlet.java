@@ -33,7 +33,11 @@ public class ListaCorreosServlet extends HttpServlet {
 		switch (accion) {
 		case "aniadirUsuario":
 			if (!BDUsuario.existeEmail(email)) {
-				BDUsuario.insertar(new Usuario(nombre, apellido, email));
+				Usuario usuario = new Usuario();
+				usuario.setNombre(nombre);
+				usuario.setApellido(apellido);
+				usuario.setEmail(email);
+				BDUsuario.insertar(usuario);
 				oos.writeInt(0);
 				oos.writeObject("Usuario aniadido correctamente.");
 			} else {
@@ -43,7 +47,11 @@ public class ListaCorreosServlet extends HttpServlet {
 			break;
 		case "actualizarUsuario":
 			if (BDUsuario.existeEmail(email)) {
-				BDUsuario.actualizar(new Usuario(nombre, apellido, email));
+				Usuario usuario = new Usuario();
+				usuario.setNombre(nombre);
+				usuario.setApellido(apellido);
+				usuario.setEmail(email);
+				BDUsuario.insertar(usuario);
 				oos.writeInt(0);
 				oos.writeObject("Usuario actualizado correctamente.");
 			} else {
@@ -53,7 +61,11 @@ public class ListaCorreosServlet extends HttpServlet {
 			break;
 		case "eliminarUsuario":
 			if (BDUsuario.existeEmail(email)) {
-				BDUsuario.eliminar(new Usuario(nombre, apellido, email));
+				Usuario usuario = new Usuario();
+				usuario.setNombre(nombre);
+				usuario.setApellido(apellido);
+				usuario.setEmail(email);
+				BDUsuario.insertar(usuario);
 				oos.writeInt(0);
 				oos.writeObject("Usuario eliminado correctamente.");
 			} else {
