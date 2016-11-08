@@ -23,13 +23,25 @@
 
 ## Ejemplos
 
+### Windows
+
+#### Instalar EclipseLink
+
+* Descargar desde [este enlace](http://www.eclipse.org/downloads/download.php?file=/rt/eclipselink/releases/2.6.4/eclipselink-2.6.4.v20160829-44060b6.zip)
+* Extraer en `C:\Program Files\EclipseLink\2.6.4\`
+
+#### Apache Derby
+
+* Descargar desde [este enlace](http://apache.rediris.es//db/derby/db-derby-10.13.1.1/db-derby-10.13.1.1-bin.zip)
+* Extraer en `C:\Program Files\Apache Software Foundation\Derby 10.13.1.1`
+
 ### Ejemplo básico
 
 * Crear un nuevo proyecto java nombrado `jpa.simple`.
 * Crear un subdirectorio `lib` donde se ubicarán los JAR. Copiarlos ahí:
-  * `eclipselink.jar` que se encuentra en `/usr/local/eclipselink/jlib/`
-  * `javax.persistence_2.1.1.v201509150925.jar` que se encuentra en `/usr/local/eclipselink/jlib/jpa/`
-  * `derby.jar` que se encuentra en `/usr/local/db-derby-10.13.1.1-bin/lib/`
+  * `eclipselink.jar` que se encuentra en `/usr/local/eclipselink/jlib/` (Linux) o `C:\Program Files\EclipseLink\2.6.4\jlib\` (Windows)
+  * `javax.persistence_2.1.1.v201509150925.jar` que se encuentra en `/usr/local/eclipselink/jlib/jpa/` (Linux) o `C:\Program Files\EclipseLink\2.6.4\jlib\jpa\` (Windows)
+  * `derby.jar` que se encuentra en `/usr/local/db-derby-10.13.1.1-bin/lib/` (Linux) o `C:\Program Files\Apache Software Foundation\Derby 10.13.1.1\lib\` (Windows)
 * Agregarlos al `build-path` (http://www.vogella.com/tutorials/Eclipse/article.html#using-jars-libraries-in-eclipse)
 * Crear la siguiente clase:
 
@@ -133,9 +145,9 @@ public class Principal {
 
 * Crear un nuevo proyecto java nombrado `jpa.eclipselink`.
 * Crear un subdirectorio `lib` donde se ubicarán los JAR. Copiarlos ahí:
-  * `eclipselink.jar` que se encuentra en `/usr/local/eclipselink/jlib/`
-  * `javax.persistence_2.1.1.v201509150925.jar` que se encuentra en `/usr/local/eclipselink/jlib/jpa/`
-  * `derby.jar` que se encuentra en `/usr/local/db-derby-10.13.1.1-bin/lib/`
+  * `eclipselink.jar` que se encuentra en `/usr/local/eclipselink/jlib/` (Linux) o `C:\Program Files\EclipseLink\2.6.4\jlib\` (Windows)
+  * `javax.persistence_2.1.1.v201509150925.jar` que se encuentra en `/usr/local/eclipselink/jlib/jpa/` (Linux) o `C:\Program Files\EclipseLink\2.6.4\jlib\jpa\` (Windows)
+  * `derby.jar` que se encuentra en `/usr/local/db-derby-10.13.1.1-bin/lib/` (Linux) o `C:\Program Files\Apache Software Foundation\Derby 10.13.1.1\lib\` (Windows)
 * Agregarlos al `build-path` (http://www.vogella.com/tutorials/Eclipse/article.html#using-jars-libraries-in-eclipse)
 * Crear el paquete `jpa.eclipselink.modelo` con las siguientes clases:
   * Familia
