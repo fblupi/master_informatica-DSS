@@ -24,6 +24,16 @@ Crear una aplicación de **Administración de Usuarios** que permita visualizar 
 
 ![servlet](img/servlet.png)
 
-## Instrucciones de usuarios
+## Configuración del proyecto
 
-En primer lugar lanzar el servlet en Tomcat y a continuación lanzar el cliente como aplicación Java.
+* Añadir las librerías que hay en WebContent/WEB-INF/lib en el Build-Path.
+* Cerciorarse de que las propiedades del proyecto coinciden con las siguientes y configurar el Apache Tomcat para ejecutarlo ahí
+![propiedades](img/propiedades.png)
+
+## Instrucciones de ejecución
+
+* Ejecutar el servlet. Click derecho en `ListaCorreosServlet.java` y hacer Run As... -> Run on server
+![lanzar-servlet](img/lanzar-servlet.png)
+
+* Ejecutar el cliente. Click derecho en `Cliente.java` y hacer Run As... -> Java Application
+![lanzar-cliente](img/lanzar-cliente.png)
