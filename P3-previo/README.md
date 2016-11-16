@@ -8,14 +8,16 @@
 * Apache Tomcat 9.0.0.M11
 * Jersey 2.24
 
-### Instalar Jersey
+### Linux
 
-#### Linux
+#### Instalar Jersey
 
 * Descargar desde [este enlace](http://repo1.maven.org/maven2/org/glassfish/jersey/bundles/jaxrs-ri/2.24/jaxrs-ri-2.24.zip)
 * Extraer en `/usr/local/`
 
-#### Windows
+### Windows
+
+#### Instalar Jersey
 
 * Descargar desde [este enlace](http://repo1.maven.org/maven2/org/glassfish/jersey/bundles/jaxrs-ri/2.24/jaxrs-ri-2.24.zip)
 * Extraer en `C:\Program Files\Java`
