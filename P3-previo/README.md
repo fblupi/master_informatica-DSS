@@ -2,18 +2,23 @@
 
 ### Versiones utilizadas
 
-* Ubuntu 16.04
+* Ubuntu 16.04 o Windows 10
 * Oracle JDK 8
 * Eclipse for Java EE 4.6 (Neon)
 * Apache Tomcat 9.0.0.M11
 * Jersey 2.24
 
-### Linux
+### Instalar Jersey
 
-#### Instalar Jersey
+#### Linux
 
 * Descargar desde [este enlace](http://repo1.maven.org/maven2/org/glassfish/jersey/bundles/jaxrs-ri/2.24/jaxrs-ri-2.24.zip)
 * Extraer en `/usr/local/`
+
+#### Windows
+
+* Descargar desde [este enlace](http://repo1.maven.org/maven2/org/glassfish/jersey/bundles/jaxrs-ri/2.24/jaxrs-ri-2.24.zip)
+* Extraer en `C:\Program Files\Java`
 
 ## Primer servicio web RESTful
 
