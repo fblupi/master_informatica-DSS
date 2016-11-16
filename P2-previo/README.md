@@ -2,7 +2,7 @@
 
 ### Versiones utilizadas
 
-* Ubuntu 16.04
+* Ubuntu 16.04 o Windows 10
 * Oracle JDK 8
 * Eclipse for Java EE 4.6 (Neon)
 * EclipseLink 2.6.4
