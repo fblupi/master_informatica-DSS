@@ -12,10 +12,11 @@ Crear una aplicación de **Administración de Usuarios** que permita visualizar 
 
 ## Software Utilizando
 
-* S.O.: Ubuntu GNOME 16.04
+* Ubuntu 16.04
 * Oracle JDK 8
 * Eclipse for Java EE 4.6 (Neon)
 * EclipseLink 2.6.4
+* Apache Tomcat 9.0.0.M11
 * Apache Derby 10.13.1.1
 
 ## Diagramas

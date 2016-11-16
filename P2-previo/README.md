@@ -21,8 +21,6 @@
 * Extraer en `/usr/local/`
 * (Opcional) Cambiar el nombre del directorio generado a uno más simple como: `db-derby-10.13.1.1-bin`
 
-## Ejemplos
-
 ### Windows
 
 #### Instalar EclipseLink
@@ -34,6 +32,8 @@
 
 * Descargar desde [este enlace](http://apache.rediris.es//db/derby/db-derby-10.13.1.1/db-derby-10.13.1.1-bin.zip)
 * Extraer en `C:\Program Files\Apache Software Foundation\Derby 10.13.1.1`
+
+## Ejemplos
 
 ### Ejemplo básico
 
