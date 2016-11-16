@@ -92,7 +92,7 @@ public class Hello {
 </web-app>
 ```
 
-* Ejecutar la aplicación y se podrá acceder a la siguiente url desde el navegador http://localhost:8080/com.vogella.jersey.first/rest/hello
+* Ejecutar la aplicación y se podrá acceder a la siguiente url desde el navegador http://localhost:8080/jersey.first/rest/hello
 * Crear la siguiente clase:
 
 ```java
