@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Formulario Web para crearse un nuevo recurso</title>
+</head>
+<body>
+<form action="http://localhost:8080/BolivarFrancisco-p3/rest/jugadores" method="POST">
+<label for="id">ID</label>
+<input name="id" />
+<br/>
+<label for="nombre">Nombre</label>
+<input name="nombre" />
+<br/>
+<label for="nombreCompleto">Nombre Completo</label>
+<input name="nombreCompleto" />
+<br/>
+<label for="posicion">Posición</label>
+<select name="posicion">
+  <option value="Portero">Portero</option>
+  <option value="Líbero">Líbero</option>
+  <option value="Defensa central">Defensa central</option>
+  <option value="Lateral derecho">Lateral derecho</option>
+  <option value="Lateral izquierdo">Lateral izquierdo</option>
+  <option value="Centrocampista defensivo">Centrocampista defensivo</option>
+  <option value="Carrilero derecho">Interior derecho</option>
+  <option value="Carrilero izquierdo">Interior izquierdo</option>
+  <option value="Centrocampista">Centrocampista</option>
+  <option value="Interior derecho">Interior derecho</option>
+  <option value="Interior izquierdo">Interior izquierdo</option>
+  <option value="Mediapunta">Mediapunta</option>
+  <option value="Extremo derecho">Extremo derecho</option>
+  <option value="Extremo izquierdo">Extremo izquierdo</option>
+  <option value="Segundo delantero">Segundo delantero</option>
+  <option value="Delantero centro">Delantero centro</option>
+</select>
+<br/>
+<label for="calidad">Calidad</label>
+<input type="number" name="calidad" min="0" max="100"/>
+<br/>
+<input type="submit" value="Enviar" />
+</form>
+</body>
+</html>
