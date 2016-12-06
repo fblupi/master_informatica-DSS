@@ -1,3 +1,25 @@
+<style>
+  h1 {
+    font-size: 24px !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+  }
+
+  div {
+    font-size: 10px !important;
+  }
+
+  p {
+    font-size: 11px !important;
+  }
+
+  ul {
+    font-size: 11px !important;
+  }
+</style>
+
 # Práctica 3: Implementación de un servicio CRUD en Java
 
 ## Enunciado
@@ -12,7 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 public enum TodoDao {
   instance;  
-  private Map<String, Todo> contentProvider = new HashMap<String, Todo>();
+  private Map<String,Todo> contentProvider = new HashMap<String,Todo>();
   private TodoDao() {
     Todo todo = new Todo("1", "Aprender REST");
     todo.setDescripcion("Leer http://...");
@@ -31,10 +53,24 @@ public enum TodoDao {
 
 El formulario permitirá hacer POST de nuevos datos en el servicio. Para lo cual nos crearemos una página (.html) en la carpeta  "WebContent" del proyecto Eclipse que se entregará.    
 
-## Software Utilizando
+## Software Utilizado
 
 * Ubuntu 16.04
 * Oracle JDK 8
 * Eclipse for Java EE 4.6 (Neon)
 * Apache Tomcat 9.0.0.M11
 * Jersey 2.24
+
+## Configuración del proyecto
+
+* Mover todos los archivos `.jar` que hay en los directorios `api`, `ext` y `lib` del directorio donde se ha instalado Jersey.
+* Agregarlos al `build-path` (http://www.vogella.com/tutorials/Eclipse/article.html#using-jars-libraries-in-eclipse)
+
+## Instrucciones de ejecución
+
+* Ejecutar el proyecto en el servidor Apache Tomcat. Click derecho en el proyecto y hacer Run As... -> Run on Server
+* Ejecutar el cliente. Click derecho en `Probador.java` y hacer Run As... -> Java Application y se ejecutará un programa que prueba el servicio CRUD implementado
+* También se puede usar el explorador para
+  * incluir jugadores desde la ruta: http://localhost:8080/BolivarFrancisco-p3/crear_jugador.html,
+  * ver los jugadores actuales: http://localhost:8080/BolivarFrancisco-p3/rest/jugadores
+  * y el recuento de los jugadores en la base de datos: http://localhost:8080/BolivarFrancisco-p3/rest/jugadores/count
