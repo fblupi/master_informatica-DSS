@@ -40,7 +40,7 @@ public class Pregunta {
         Random random = new Random();
         int number;
 
-        for(int i=0; i<4; i++) {
+        for (int i=0; i<4; i++) {
             number = random.nextInt(4);
             while (respuestas[number] != null) {
                 number = (number + 1) % 4;

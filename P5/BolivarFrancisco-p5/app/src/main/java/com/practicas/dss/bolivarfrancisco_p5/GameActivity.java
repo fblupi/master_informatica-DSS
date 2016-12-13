@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,8 +12,10 @@ import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,10 +41,14 @@ public class GameActivity extends Activity {
     private Button option1; // Botón segunda opción
     private Button option2; // Botón tercera opción
     private Button option3; // Botón cuarta opción
+    private ImageButton play; // Botón play
+    private ImageButton pause; // Botón pause
+    private ImageButton stop; // Botón stop
     private CountDownTimer cronometro; // Cronómetro con la cuenta atrás
     private SoundPool soundPool; // Sonido de acierto o fallo
     private int spAciertoId; // Identificador de sonido de acierto
     private int spFalloId; // Identificador de sonido de fallo
+    private MediaPlayer mediaPlayer;
     private long mLastClickTime = 0; // Variable para controlar el tiempo entre pulsaciones
 
     // Método llamado al crear la actividad
@@ -54,16 +61,15 @@ public class GameActivity extends Activity {
         // Se busca el texto de tiempo
         nTiempo = (TextView) findViewById(R.id.nTime);
 
-
         maxVidas=5;
         vidas = 5;
         modo = extras.getInt("mod");
 
-        if(modo == 0) {
+        if (modo == 0) {
             limite = extras.getInt("num"); // Se recoge el parámetro con el límite de preguntas
             LinearLayout lHearts = (LinearLayout) findViewById(R.id.heartsLayout);
             lHearts.setVisibility(View.GONE); //Se ocultan los corazones
-            if(limite > Preguntas.size() || limite < 1) { // Número incorrecto de preguntas
+            if (limite > Preguntas.size() || limite < 1) { // Número incorrecto de preguntas
                 limite = Preguntas.size(); // Se juegan todas las preguntas
                 Toast.makeText(this, R.string.question_readjustment, Toast.LENGTH_SHORT).show();
             }
@@ -82,9 +88,12 @@ public class GameActivity extends Activity {
         option1 = (Button) findViewById(R.id.option1);
         option2 = (Button) findViewById(R.id.option2);
         option3 = (Button) findViewById(R.id.option3);
+        play = (ImageButton) findViewById(R.id.play);
+        pause = (ImageButton) findViewById(R.id.pause);
+        stop = (ImageButton) findViewById(R.id.stop);
 
         // Se crean los sonidos de acierto y fallo
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { // Usa el nuevo constructor
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { // Usa el nuevo constructor
             AudioAttributes aa = new AudioAttributes.Builder()
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .setUsage(AudioAttributes.USAGE_GAME)
@@ -152,6 +161,40 @@ public class GameActivity extends Activity {
             }
         });
 
+        // Listener de los botones del reproductor
+        play.setOnClickListener(new View.OnClickListener() { // Play
+            @Override
+            public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - mLastClickTime < INTERVALO_CLICK) { // Se ha pulsado un botón hace menos de INTERVALO_CLICK milisegundos
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime(); // Se actualiza la última pulsación
+                playMusic();
+            }
+        });
+
+        pause.setOnClickListener(new View.OnClickListener() { // Pause
+            @Override
+            public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - mLastClickTime < INTERVALO_CLICK) { // Se ha pulsado un botón hace menos de INTERVALO_CLICK milisegundos
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime(); // Se actualiza la última pulsación
+                pauseMusic();
+            }
+        });
+
+        stop.setOnClickListener(new View.OnClickListener() { // Stop
+            @Override
+            public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - mLastClickTime < INTERVALO_CLICK) { // Se ha pulsado un botón hace menos de INTERVALO_CLICK milisegundos
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime(); // Se actualiza la última pulsación
+                stopMusic();
+            }
+        });
+
     }
 
     @Override
@@ -170,6 +213,9 @@ public class GameActivity extends Activity {
                     @Override
                     public void onPositive(MaterialDialog dialog) {
                         cronometro.cancel();
+                        if (pregunta.getTipo() == 2) { // Hay música
+                            destruirMediaPlayer(); // Finalizar y liberar música
+                        }
                         finalizarPartida(); // Se finaliza la partida
                     }
                 })
@@ -181,7 +227,10 @@ public class GameActivity extends Activity {
 
     // Método llamado al pulsar un botón de respuesta
     private void elegirRespuesta(int id) {
-        if(pregunta.getRespuestaCorrecta() == id) { // Acierto
+        if (pregunta.getTipo() == 2) { // Hay música
+            destruirMediaPlayer(); // Finalizar y liberar música
+        }
+        if (pregunta.getRespuestaCorrecta() == id) { // Acierto
             // Se colorea el botón de verde
             switch(id) {
                 case 0:
@@ -222,6 +271,28 @@ public class GameActivity extends Activity {
         }
     }
 
+    // Método llamado al pulsar en play
+    private void playMusic() {
+        mediaPlayer.start(); // Se vuelve a reproducir
+        pause.setEnabled(true); // Se habilita el botón de pause
+        play.setEnabled(false); // Se deshabilita el botón de play
+    }
+
+    // Método llamado al pulsar en pause
+    private void pauseMusic() {
+        mediaPlayer.pause(); // Se para
+        play.setEnabled(true); // Se habilita el botón de play
+        pause.setEnabled(false); // Se deshabilita el botón de pause
+    }
+
+    // Método llamado al pulsar en stop
+    private void stopMusic() {
+        mediaPlayer.seekTo(0); // Se vuelve al principio
+        mediaPlayer.start(); // Se inicia
+        play.setEnabled(true); // Se habilita el botón de play
+        pause.setEnabled(false); // Se deshabilita el botón de pause
+    }
+
     private void actualizaCorazones(){
         LinearLayout lHearts = (LinearLayout) findViewById(R.id.heartsLayout);
 
@@ -235,7 +306,7 @@ public class GameActivity extends Activity {
     // Método para actualizar la actividad cada vez que se cambia de pregunta
     private void actualizarVistas() {
         // Vidas
-        if(modo == 1) {
+        if (modo == 1) {
             actualizaCorazones();
         }
 
@@ -247,11 +318,29 @@ public class GameActivity extends Activity {
 
         // Se cargan la imagen y el RelativeLayout donde se encuentran los controles de la música
         ImageView image = (ImageView) findViewById(R.id.image);
+        RelativeLayout music = (RelativeLayout) findViewById(R.id.music);
 
-        if (this.pregunta.getTipo() == 1) { // Si es modo pregunta con imagen se carga el recurso
-            image.setImageResource(getImageId(this, this.pregunta.getRecurso()));
-        } else { // en caso contrario se carga la imagen genérica
-            image.setImageResource(R.drawable.generic_question);
+        if (this.pregunta.getTipo() == 0 || this.pregunta.getTipo() == 1) {
+            music.setVisibility(View.GONE); // Los controles de la música desaparecen
+            image.setVisibility(View.VISIBLE); // La imagen se hace visible
+            if (this.pregunta.getTipo() == 1) { // Si es tipo pregunta con imagen se carga el recurso
+                image.setImageResource(getImageId(this, this.pregunta.getRecurso()));
+            } else { // en caso contrario se carga la imagen genérica
+                image.setImageResource(R.drawable.generic_question);
+            }
+        } else { // Si la pregunta es de música
+            image.setVisibility(View.GONE); // La imagen desaparece
+            music.setVisibility(View.VISIBLE); // Los controles de música se hacen visibles
+            mediaPlayer = MediaPlayer.create(this, getSongId(this, this.pregunta.getRecurso())); // Se crea el media player
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mediaPlayer.setLooping(true); // Se habilita el Looping para que se repita
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) { // Cuando esté preparado se inicia
+                    mp.start();
+                }
+            });
+            play.setEnabled(false); // Se deshabilita el botón play, pues actualmente está sonando
         }
 
         // Se carga la pregunta y se le da el texto correspondiente
@@ -383,9 +472,21 @@ public class GameActivity extends Activity {
         finish();
     }
 
+    // Método que destruye el mediaPlayer
+    private void destruirMediaPlayer() {
+        mediaPlayer.stop();
+        mediaPlayer.reset();
+        mediaPlayer.release();
+    }
+
     // Método para obtener el id de un recurso en forma de imagen a partir de un String
     private int getImageId(Context context, String imageName) {
         return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
+    }
+
+    // Método para obtener el id de un recurso en forma de sonido a partir de un String
+    private int getSongId(Context context, String songName) {
+        return context.getResources().getIdentifier("raw/" + songName, null, context.getPackageName());
     }
 
     private void cuentaAtras() {

@@ -20,7 +20,7 @@ public class DBHelperResults extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     public static DBHelperResults getInstance(Context context) {
-        if(instance == null) {
+        if (instance == null) {
             instance = new DBHelperResults(context);
         }
         return instance;
@@ -76,7 +76,7 @@ public class DBHelperResults extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM puntuaciones", null);
         c.moveToFirst();
-        for(int n = 0; n < i; n++) {
+        for (int n = 0; n < i; n++) {
             c.moveToNext();
         }
         resultado = new Puntuacion(
@@ -94,7 +94,7 @@ public class DBHelperResults extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM puntuaciones", null);
-        if(c.moveToFirst()) {
+        if (c.moveToFirst()) {
             do {
                 puntuaciones.add(new Puntuacion(
                         c.getString(1),

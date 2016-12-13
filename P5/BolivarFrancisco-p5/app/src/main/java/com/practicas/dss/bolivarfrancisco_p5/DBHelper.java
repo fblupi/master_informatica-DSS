@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     public static DBHelper getInstance(Context context) {
-        if(instance == null) {
+        if (instance == null) {
             instance = new DBHelper(context);
         }
         return instance;
@@ -73,7 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM preguntas WHERE tema = '" + tema + "'",null);
-        if(c.moveToFirst()) {
+        if (c.moveToFirst()) {
             do {
                 preguntas.add(new Pregunta(
                         c.getString(2),
@@ -95,7 +95,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM preguntas",null);
-        if(c.moveToFirst()) {
+        if (c.moveToFirst()) {
             do {
                 preguntas.add(new Pregunta(
                         c.getString(2),

@@ -22,7 +22,7 @@ public class AdaptadorResults extends BaseAdapter {
 
     public View getView(int i, View vistaReciclada, ViewGroup padre) {
         Puntuacion puntuacion = db.get(i);
-        if(vistaReciclada == null) {
+        if (vistaReciclada == null) {
             vistaReciclada = inflador.inflate(R.layout.result, null);
         }
         fecha = (TextView) vistaReciclada.findViewById(R.id.listFecha);

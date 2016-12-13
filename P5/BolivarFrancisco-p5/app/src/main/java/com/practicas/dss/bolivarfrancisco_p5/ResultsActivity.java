@@ -36,24 +36,7 @@ public class ResultsActivity extends Activity {
         //lista = (LinearLayout) findViewById(R.id.listaPuntuaciones);
         //actualizarLista();
     }
-/*
-    private void actualizarLista() {
-        ArrayList<Puntuacion> listaPuntuaciones = db.getAll();
-        if(listaPuntuaciones.size() > 0) {
-            for(Puntuacion puntuacion : listaPuntuaciones) {
-                TextView textView = new TextView(this);
-                textView.setText(puntuacion.getFecha() + " " + puntuacion.getCorrectas() + " " + puntuacion.getFallidas() + " " + puntuacion.getPorcentaje());
-                textView.setTextAppearance(this, android.R.style.TextAppearance_Medium);
-                lista.addView(textView);
-            }
-        } else {
-            TextView textView = new TextView(this);
-            textView.setText(R.string.no_results);
-            textView.setTextAppearance(this, android.R.style.TextAppearance_Medium);
-            lista.addView(textView);
-        }
-    }
-*/
+
     private void eliminarResultados() {
         new MaterialDialog.Builder(this)
                 .title(R.string.delete_results)

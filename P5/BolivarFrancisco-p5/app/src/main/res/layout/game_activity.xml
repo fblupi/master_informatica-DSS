@@ -95,7 +95,7 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -109,7 +109,39 @@
             android:id="@+id/image"
             android:src="@drawable/generic_question" />
 
-    </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/music">
+
+            <ImageButton
+                android:id="@+id/play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_media_play" />
+
+            <ImageButton
+                android:id="@+id/pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/play"
+                android:layout_marginLeft="@dimen/music_button_margin"
+                android:layout_toRightOf="@+id/play"
+                android:src="@android:drawable/ic_media_pause" />
+
+            <ImageButton
+                android:id="@+id/stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/pause"
+                android:layout_marginLeft="@dimen/music_button_margin"
+                android:layout_toRightOf="@+id/pause"
+                android:src="@android:drawable/ic_media_rew" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
 
     <LinearLayout
         android:orientation="vertical"
