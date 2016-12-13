@@ -489,6 +489,7 @@ public class GameActivity extends Activity {
         return context.getResources().getIdentifier("raw/" + songName, null, context.getPackageName());
     }
 
+    // Método para realizar la cuenta atrás
     private void cuentaAtras() {
         cronometro = new CountDownTimer(30000,1000) {
             @Override
