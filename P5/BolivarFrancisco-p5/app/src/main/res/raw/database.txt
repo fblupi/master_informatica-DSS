@@ -1,0 +1,130 @@
+easy;¿Cómo se llama el simpático androide que aparece en esta imagen?;BB8;Wall-E;R2D2;OB8;1;image001
+normal;¿En qué película podemos ver esta imagen?;El Rey León;Khumba;Madagascar;Tarzán;1;image002
+normal;¿Cómo se llama esta princesa?;Aurora;Bella;Jasmín;Ariel;1;image003
+hard;¿Cuándo se  estrenó esta película?;2009;2008;2011;2012;1;image004
+normal;¿Cómo se llama este personaje?;Flounder;Scuttle;Alana;Flipper;1;image005
+hard;¿Cómo se llama este personaje?;Ursula;Montserrat Caballé;Vanessa;Medusa;1;image006
+easy;¿Cómo se llama el conejo de esta imagen?;Tambor;Mr. Rabbit;Trombón;Babe;1;image007
+normal;¿Cómo se llama este personaje?;Jessie;Betty;Laurie;Annie;1;image008
+easy;¿De dónde provienen estos simpáticos personajes?;Pizza Planet;Marte;Burger Planet;Rocket Planet;1;image009
+normal;¿Cómo se llama este lobo de El libro de la selva?;Akela;Kay;Bagheera;Kaa;1;image010
+easy;¿Cómo se llama este simpático oso?;Baloo;Bagheera;Louie;Raksha;1;image011
+easy;¿Cómo se llama este sabio personaje?;Rafiki;Mufasa;Raphael;Rasputín;1;image012
+normal;¿Cómo se llama este temible Leopardo?;Sabor;Leo;Scar;Manor;1;image013
+normal;¿Cómo se llama este curioso personaje?;Bing Bong;Ding Dong;Ping Pong;Ring Rong;1;image014
+normal;¿Cómo se llama esta chica de la que Hércules se enamora?;Megara;Pena;Hera;Alcmena;1;image015
+normal;¿Cómo se llama este curioso personaje que acompaña a Hércules?;Filoctetes;Pánico;Laquesis;Atropo;1;image016
+normal;¿Cómo se llama este mono?;Abu;Iago;Rajah;Jafar;1;image017
+normal;¿Cómo se llama este enanito de Blancanieves?;Mudito;Mocoso;Tímido;Feliz;1;image018
+normal;¿Cómo se llama este dragón?;Mushu;Chi Fu;Min Fu;Mishu;1;image019
+normal;¿Cómo se llama este curioso mapache?;Meeko;Flit;Percy;Ratcliffe;1;image020
+normal;¿Cómo se llama este ayudante del Capitán Garfio?;Mr. Smee;Mr. Roger;Mr. Turner;Mr. Flea;1;image021
+normal;¿Cómo se llama este personaje de 101 dálmatas?;Roger;Turner;William;Stephen;1;image022
+easy;¿Cómo se llama esta excéntrica mujer?;Cruella de Vil;Vecchia de Vil;Bella de Vil;Brutta de Vil;1;image023
+easy;¿Cómo se llama esta adorable perrita?;Reina;Bella;Dama;Linda;1;image024
+normal;¿Cómo se llama esta adorable rata?;Remy;Digard;François;Lou;1;image025
+normal;¿Cómo se llama este chico protagonista en Ratatouille?;Alfredo;Remy;Anton;Lou;1;image026
+easy;¿Cómo se llama este personaje fortachón?;Ralph;Sansón;Wrestler;Machacasaurio;1;image027
+easy;¿Cómo se llama este simpático muñeco de nieve?;Olaf;Ralf;Oladola;Snowy;1;image028
+normal;¿Cómo se llama este temible tiburón?;Bruce;Bob;Norman;Flo;1;image029
+normal;¿Cuántos años tiene esta tortuga de Buscando a Nemo?;Unos 150;Unos 80;Unos 50;Unos 20;1;image030
+easy;¿Cómo se llama este adorable personaje?;Baymax;Big Hero;Raymax;Big one;1;image031
+hard;¿Cómo se llama este personaje de 101 dálmatas?;Horacio;Toms;Le Pell;Gaspar;1;image032
+normal;¿Cómo se llama el lugar que aparece en la imagen?;Roca del Orgullo;Roca del León;Roca de la Selva;Roca del Consejo;1;image033
+normal;¿Cuál de los siguientes no es un enanito en la película Blancanieves y los siete enanitos?;Cascarrabias;Timido;Mocoso;Dormilón;0;null
+easy;¿Qué es Stitch de la película Lilo y Stitch?;Un alienígena;Un koala;Un mono;Una niña;0;null
+normal;¿Cuál de los siguientes titanes no aparece en la película Hércules?;Titán de agua;Titán de roca;Titán de lava;Titán de hielo;0;null
+hard;¿En qué año se estrenó Pinocho?;1940;1980;1970;1960;0;null
+easy;¿Cuántas hadas madrinas aparecen en la película Cenicienta?;1;3;2;4;0;null
+easy;¿En qué se convierte la carroza de Cenicienta pasada la media noche?;Una calabaza;Una mandarina;Una berenjena;Un melón;0;null
+easy;¿Cómo se llama el cangrejo de La Sirenita?;Sebastián;Lobster;Roberto;Arturo;0;null
+normal;¿Cuál fue la primera película de Disney?;Blancanieves y los siete enanitos;Pinocho;Dumbo;Bambi;0;null
+normal;¿Cómo se llama el perro de juguete de Toy Story?;Slinky;Boxter;Toby;Bob;0;null
+easy;¿Cómo se llama el dinosaurio de juguete de Toy Story?;Rex;Bob;Jerry;Dyno;0;null
+easy;¿Por qué se hace pasar Mulan?;Por un hombre;Por un samurai;Por un huno;Por una sirviente real;0;null
+normal;¿Qué le cose Wendy a Peter Pan?;Su sombra;Su sombrero;Su chaqueta;Sus pantalones;0;null
+easy;¿Cómo se llama el perro protagonista de La dama y el vagabundo?;Golfo;Toby;Bob;Rufus;0;null
+easy;¿Qué es Bambi?;Un cervatillo;Un ciervo;Un reno;Un arce;0;null
+normal;¿Quién es el antagonista de Aladdín?;Jafar;Aladdín;Abu;Sultán;0;null
+easy;¿Quién es la pareja de Mickey Mouse?;Minnie;Daisy;Pluto;Goofy;0;null
+easy;¿Quién es la pareja del pato Donald?;Daisy;Minnie;Pluto;Goofy;0;null
+easy;¿Quién es la mascota de Mickey Mouse?;Pluto;Daisy;Donald;Goofy;0;null
+easy;¿Qué es el protagonista de Cars?;Un coche de carreras;Un coche;Un camión;Una furgoneta;0;null
+hard;¿Cuándo se estrenó Bambi?;1942;1943;1944;1945;0;null
+hard;¿Cómo se llama la hucha con forma de cerdo de Toy Story?;Hamm;Etch;Mike;Lenny;0;null
+normal;¿Cuál es la primera película de animación con efectos digitales de la historia?;Toy Story;El Rey León;Fantasía;El libro de la selva;0;null
+normal;¿Cómo se llama el jefe de los elefantes de El libro de la selva?;Hathi;Khan;Dhole;Kay;0;null
+normal;¿Cómo se llama la madre de Mowgli?;Messua;Kaa;Baloo;Haissa;0;null
+hard;¿De qué año es la película original de El libro de la selva?;1967;1964;1968;1963;0;null
+hard;¿De qué año es la película Del revés (Inside Out)?;2015;2014;2016;2013;0;null
+hard;¿Quién es el compositor de la banda sonora de El rey león?;Hans Zimmer;John Williams;Phil Collins;Lisa Gerrard;0;null
+easy;¿Cómo se llama el padre de Simba?;Mufasa;Rafiki;Scar;Sarafina;0;null
+normal;¿Cómo se llama el tucán de El rey león?;Zazú;Ticú;Tacú;Zizú;0;null
+easy;¿Con quién se casó Simba?;Nala;Zira;Vitani;Sarafina;0;null
+hard;¿En qué año se estrenó El rey león?;1994;1993;1995;1996;0;null
+hard;¿Cuántos Óscar gano El rey león?;2;1;3;4;0;null
+hard;¿A qué animal dobla Rowan Atkinson en la versión original de El rey león?;Pájaro;Mandril;Papión;Hiena;0;null
+normal;¿Cómo se llama el gorila que encontró a Tarzán cuando era un bebé?;Kala;Terk;Kerchak;Manu;0;null
+easy;¿Cómo se llama la chica de la que se enamora Tarzán?;Jane;Anna;Marie;Gisela;0;null
+normal;¿A qué teme el Capitán Garfio?;Cocodrilo;Tiburón;Suricatas;Mariposas;0;null
+normal;¿De qué color son las emociones de asco en Del revés (Inside Out)?;Verdes;Amarillas;Moradas;Rojas;0;null
+hard;¿Cuál de estas no es una musa en Hércules?;Alcmena;Caliope;Melpomene;Thalia;0;null
+easy;¿Quién es el antagonista en Hércules?;Hades;Zeus;Nesso;Caronte;0;null
+easy;¿Cómo se llama el candelabro de La bella y la bestia?;Lumière;Maurice;Candelabre;Roland;0;null
+easy;¿Cómo se llama el reloj de La bella y la bestia?;Ding-Dong;Montre;Horloge;Pendule;0;null
+normal;¿Cómo se llama el plumero de La bella y la bestia?;Fifí;Fliflí;Fifú;Fliflú;0;null
+easy;¿Quién es el antagonista de La bella y la bestia?;Gastón;Maurice;LeFou;Roland;0;null
+easy;¿De qué color es el genio de Aladdín?;Azul;Morado;Verde;Rojo;0;null
+normal;¿De qué color es el chaleco de Aladdín?;Morado;Azul;Verde;Rojo;0;null
+easy;¿Cómo se llama la chica de la que se enamora Aladdín?;Jasmín;Azahara;Sherezade;Arrayán;0;null
+normal;¿De qué color es el malvado loro de Aladdín?;Rojo;Morado;Azul;Verde;0;null
+easy;¿De qué color es el pelo de La sirenita?;Rojo;Naranja;Verde;Morado;0;null
+easy;¿De qué color es el pelo de Blancanieves?;Negro;Castaño;Rubio;Es calva;0;null
+normal;¿De qué color es el vestido de la malvada reina de Blancanieves?;Morado;Negro;Rojo;Azul;0;null
+easy;¿De qué color es el pelo de Alegría de Del revés (Inside Out)?;Azul;Amarillo;Morado;Verde;0;null
+normal;¿Cómo se llama la protagonista de Del revés (Inside Out)?;Riley;Curry;Emma;Stacy;0;null
+normal;¿Cómo se llama el padre de Pocahontas?;Powhatan;Kocoum;Nakoma;Topanga;0;null
+normal;¿De qué color es el pelo de John Smith de Pocahontas?;Rubio;Castaño;Negro;Pelirrojo;0;null
+easy;¿Qué animal es Timón de El rey león?;Suricato;Zarigüella;Ardilla;Lemur;0;null
+easy;¿Qué parte del cuerpo tenía particularmente grande Dumbo?;Orejas;Trompa;Patas;Cola;0;null
+easy;¿Cómo se llama el viejo carpintero que crea a Pinocho?;Geppetto;Giusseppe;Pierluigi;Gianluigi;0;null
+normal;¿De qué color es el Hada que le da vida a Pinocho?;Azul;Rosa;Morada;Verde;0;null
+easy;¿Qué parte del cuerpo se le hace grande a Pinocho cuando miente?;Nariz;Orejas;Piernas;Manos;0;null
+hard;¿Cómo se llama el gato mascota del creador de Pinocho?;Fígaro;Bonucci;Félix;Benucci;0;null
+normal;Además de un gato ¿qué otra mascota tiene el creador de Pinocho?;Pez;Perro;Serpiente;Hurón;0;null
+hard;¿De qué color es el gato mascota del creador de Pinocho?;Negro;Marrón;Naranja;Verde;0;null
+hard;¿Cómo se apellida Wendy de Peter Pan?;Darling;Stones;McCarthy;Turner;0;null
+easy;¿Cómo se llama el padre de los 101 dálmatas?;Pongo;Rufus;Bob;Odie;0;null
+hard;¿Cómo se llama el dueño de la protagonista de La dama y el vagabundo?;Jaimito;Jaime;Willy;William;0;null
+hard;¿Cómo se llama el prestigioso crítico de cocina de Ratatouille?;Anton;Alfredo;Auguste;Emil;0;null
+normal;¿Cómo se llama el padre de Nemo?;Marlin;Darling;Marvin;Norman;0;null
+easy;¿Qué problema tiene Dory de Buscando a Nemo?;Olvida las cosas;Solo habla balleno;No sabe nadar;No sabe hablar;0;null
+normal;¿De qué país es la Princesa Mérida de Brave (Indomable)?;Escocia;Irlanda;Gales;Inglaterra;0;null
+normal;¿Qué enanito tiene las orejas mucho más grandes que el resto?;Mudito;Sabio;Gruñón;Dormilón;0;null
+hard;En Piratas del Caribe la maldición de la Perla Negra, ¿cuántas eran las monedas de oro azteca malditas que necesita reunir Barbossa para acabar con la maldición que pesa sobre él y su tripulación?;882;548;988;240;0;null
+hard;¿En qué banda están inspirados los buitres de El libro de la selva?;The Beatles;The Rolling Stones;The Who;Queen;0;null
+hard;Cuando Cheetah está en el campamento de Tarzán, ¿qué elemento de La Bella y la Bestia se puede ver?;El juego de tazas de té;El libro que Bella lee en la fuente;Un candelabro;El reloj de bolsillo de Gastón;0;null
+hard;En 101 dálmatas, ¿cuántas manchas tiene Pongo?;72;83;54;68;0;null
+hard;Los nombres de las hienas Banzai, Shenzi y Ed, ¿de qué lengua proceden?;Swahilí;Zulú;Hausa;Keniata;0;null
+hard;¿A dónde se dirige el carro lleno de niños en Pinocho?;Al País de los juguetes;A Nunca Jamás;A ciudad esmeralda;A Öz;0;null
+hard;¿De qué madera está hecho Pinocho?;Pino;Roble;Sauce;Caoba;0;null
+hard;¿De cuántos animales diferentes está compuesto Bestia?;7;8;6;5;0;null
+hard;En Pocahontas, en la escena del baño de burbujas del perro del Gobernador Ratcliffle, ¿qué se le queda al canino en la cabeza cuando Meeko cae en el baño?;Una cereza;Una esponja;La cola del mapache;La pastilla de jabón;0;null
+hard;¿Cuál fue la primera película de Disney basada en hechos reales?;Pocahontas;Tarzán;Blancanieves;Los 101 dálmatas;0;null
+hard;Pocahontas era el apodo de la pequeña india, ¿cuál es su nombre real?;Matoaka;Sehatoga;Kekata;Nakoma;0;null
+hard;Cuando Jane enseña a Tarzán diapositivas de la civilización moderna, ¿qué hito aparece entre ellas?;Esfinge egipcia;Big Ben;Estatua de la libertad;Torre Eiffel;0;null
+hard;En Monstruos S.A. cuando George Sanderson sale de la habitación con un calcetín pegado a la espalda, un compañero grita un código, ¿cuál es?;¡3312! ¡Tenemos un 3312!;¡1233! ¡Tenemos un 1233!;¡1234! ¡Tenemos un 1234!;¡3412! ¡Tenemos un 3412!;0;null
+hard;¿Cuánto le costaría a Jack Sparrow amarrar su barco en Port Royal?;1 chelín;10 chelines;5 chelines;3 chelines;0;null
+hard;En Monstruos S.A., hay un "cameo" de otra película Disney. ¿Quién aparece en el cuarto de Boo?;Nemo;Woody;Rayo McQueen;Pegaso;0;null
+hard;¿Cómo se llama el padre de Bella?;Maurice;Horace;Boris;Bernard;0;null
+hard;¿Qué tipo de sombrero lleva Pepito Grillo?;Un sombrero de copa;Un sombrero hongo;Una boina;Un bombín;0;null
+hard;¿A qué llama cachivache Scuttle, la gaviota de la Sirenita?;A un tenedor;A un zapato; A un peine; A un alga;0;null
+normal;¿Qué rango militar tiene el líder del ejército de Andy de Toy Story?;Sargento;Comandante;Capitán;Teniente;0;null
+normal;¿Cuál fue el primer deseo de Aladdín?;Ser príncipe;Ser rico;Volar en una alfombra;Casarse con Jasmín;0;null
+hard;Al inicio de Pocahontas, se puede escuchar la canción "En 1... Surcamos este mar, la gloria y la riqueza nos envían a buscar...", ¿qué fecha concreta es?;1607;1309;1609;1307;0;null
+hard;¿Qué princesa Disney tuvo más de dos hadas que le concedieron deseos?;Aurora;Cenicienta;Bella;Jasmín;0;null
+hard;¿En qué drama de Shakespeare está inspirado el rey león?;Hamlet;Romeo y Julieta;Otelo;Mucho ruido y pocas nueces;0;null
+hard;Genio canta "Gran Alí, el bravo Alí, Alí Ababua, es audaz, fuerte y tenaz, claro que sí, venció...", ¿cómo sigue?;A cuchillo a un león;Con las manos a un león;A todo un gran batallón;Al visir, rey y ladrón;0;null
+hard;¿Qué es lo primero que lanzan a Quasimodo cuando se rey por un día?;Un tomate;Una rosa;Unas bragas;Un cuchillo;0;null
+hard;¿Cuántos cadáveres se encuentra Jack Sparrow a la entrada de Port Royal?;3;1;2;4;0;null
+hard;El viejo hereje de El jorobado de Notre Dame aparece en Aladdín, ¿sabrías decir quién es?;Jafar;Mercader;Vendedor de manzanas;Razoul;0;null
