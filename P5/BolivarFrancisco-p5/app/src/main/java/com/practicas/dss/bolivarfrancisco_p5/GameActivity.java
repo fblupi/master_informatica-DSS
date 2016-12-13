@@ -289,8 +289,8 @@ public class GameActivity extends Activity {
     private void stopMusic() {
         mediaPlayer.seekTo(0); // Se vuelve al principio
         mediaPlayer.start(); // Se inicia
-        play.setEnabled(true); // Se habilita el botón de play
-        pause.setEnabled(false); // Se deshabilita el botón de pause
+        pause.setEnabled(true); // Se habilita el botón de pause
+        play.setEnabled(false); // Se deshabilita el botón de play
     }
 
     private void actualizaCorazones(){
@@ -501,6 +501,9 @@ public class GameActivity extends Activity {
             }
             @Override
             public void onFinish() {
+                if (pregunta.getTipo() == 2) { // Hay música
+                    destruirMediaPlayer(); // Finalizar y liberar música
+                }
                 respuestaIncorrecta();
             }
         }.start();

@@ -28,6 +28,11 @@
             android:screenOrientation="portrait"
             android:label="@string/title_activity_results" >
         </activity>
+        <activity
+            android:name="com.practicas.dss.bolivarfrancisco_p5.OtherGamesActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_other_games" >
+        </activity>
 
     </application>
 
