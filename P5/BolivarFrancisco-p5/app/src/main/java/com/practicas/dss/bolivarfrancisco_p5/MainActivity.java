@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
         Button btNewGame = (Button) findViewById(R.id.new_game);
         Button btNewExtremeGame = (Button) findViewById(R.id.new_extreme_game);
         Button btResults = (Button) findViewById(R.id.results);
+        Button btOtherGames = (Button) findViewById(R.id.other_games);
 
         Preguntas.setPreguntas(db.getAll()); // Se obtienen todas las preguntas de cine de la BBDD
 
@@ -58,6 +59,17 @@ public class MainActivity extends Activity {
                 }
                 mLastClickTime = SystemClock.elapsedRealtime(); // Se actualiza la última pulsación
                 lanzarResultados();
+            }
+        });
+
+        btOtherGames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - mLastClickTime < INTERVALO_CLICK) { // Se ha pulsado un botón hace menos de INTERVALO_CLICK milisegundos
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime(); // Se actualiza la última pulsación
+                lanzarOtrosJuegos();
             }
         });
     }
@@ -102,6 +114,12 @@ public class MainActivity extends Activity {
 
     private void lanzarResultados() {
         Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
+        startActivity(intent);
+    }
+
+
+    private void lanzarOtrosJuegos() {
+        Intent intent = new Intent(MainActivity.this, OtherGamesActivity.class);
         startActivity(intent);
     }
 }
