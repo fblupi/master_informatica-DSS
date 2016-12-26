@@ -73,3 +73,15 @@ Orquestar, de forma simplificada, el mercadeo entre un comprador y un vendedor d
     * londres: *40*
     * chicago: *250*
     * cualquier otro: *125*
+
+### Ejercicio 2
+
+Este ejercicio solo se ha dejado planteado (no se ha llegado a implementar). Se tendrían dos procesos (`comprador` y `vendedor`) con tres funciones (`consiguePrecio`, `actualizarOferta` y `compra`) que tendrían los siguientes diagramas:
+
+* Comprador:
+
+![comprador](https://cloud.githubusercontent.com/assets/6973564/21487225/531bcdc8-cbc4-11e6-9e13-e74c46e57132.png)
+
+* Vendedor:
+
+![vendedor](https://cloud.githubusercontent.com/assets/6973564/21487222/52aab660-cbc4-11e6-9709-fd1bbd0953d9.PNG)
