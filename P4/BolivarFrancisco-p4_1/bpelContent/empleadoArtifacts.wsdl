@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
-<definitions name="travel"
-        targetNamespace="http://travel"
+<definitions name="empleado"
+        targetNamespace="http://empleado"
+        xmlns:tns="http://empleado"
         xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
         xmlns="http://schemas.xmlsoap.org/wsdl/"
         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-        xmlns:trv="http://travel">
+        >
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      TYPE DEFINITION - List of types participating in this BPEL process 
@@ -14,32 +15,21 @@
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
     <types>
         <schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
-                targetNamespace="http://travel" 
+                targetNamespace="http://empleado" 
                 xmlns="http://www.w3.org/2001/XMLSchema">
 
-            <element name="travelRequest">
+            <element name="empleadoRequest">
                 <complexType>
                     <sequence>
-                    	<element name="name" type="string" />
-                    	<element name="from" type="string"></element>
-                    	<element name="destination" type="string"></element>
-                    	<element name="depart" type="date"></element>
-                    	<element name="return" type="date"></element>
+                        <element name="nombre" type="string"/>
                     </sequence>
                 </complexType>
             </element>
 
-            <element name="travelResponse">
+            <element name="empleadoResponse">
                 <complexType>
                     <sequence>
-                    	<element name="name" type="string" />
-                    	<element name="from" type="string"></element>
-                    	<element name="destination" type="string"></element>
-                    	<element name="depart" type="dateTime"></element>
-                    	<element name="return" type="dateTime"></element>
-                    	<element name="price" type="float"></element>
-                        <element name="type" type="string"></element>
-                        <element name="airline" type="string"></element>
+                        <element name="tipo" type="string"/>
                     </sequence>
                 </complexType>
             </element>
@@ -51,11 +41,11 @@
      MESSAGE TYPE DEFINITION - Definition of the message types used as 
      part of the port type defintions
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <message name="travelRequestMessage">
-        <part name="payload" element="trv:travelRequest"/>
+    <message name="empleadoRequestMessage">
+        <part name="payload" element="tns:empleadoRequest"/>
     </message>
-    <message name="travelResponseMessage">
-        <part name="payload" element="trv:travelResponse"/>
+    <message name="empleadoResponseMessage">
+        <part name="payload" element="tns:empleadoResponse"/>
     </message>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,18 +53,18 @@
      a logical service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
 
-    <!-- portType implemented by the travel BPEL process -->
-    <portType name="travel">
-        <operation name="process">
-            <input  message="trv:travelRequestMessage" />
-            <output message="trv:travelResponseMessage"/>
+    <!-- portType implemented by the empleado BPEL process -->
+    <portType name="empleado">
+        <operation name="getTipo">
+            <input  message="tns:empleadoRequestMessage" />
+            <output message="tns:empleadoResponseMessage"/>
         </operation>
     </portType>   
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      PARTNER LINK TYPE DEFINITION
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <plnk:partnerLinkType name="travel">
-        <plnk:role name="travelProvider" portType="trv:travel"/>
+    <plnk:partnerLinkType name="empleado">
+        <plnk:role name="empleadoProvider" portType="tns:empleado"/>
     </plnk:partnerLinkType>
     
 
@@ -82,12 +72,12 @@
      BINDING DEFINITION - Defines the message format and protocol details
      for a web service.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <binding name="travelBinding" type="trv:travel">
+    <binding name="empleadoBinding" type="tns:empleado">
     	<soap:binding style="document"
     		transport="http://schemas.xmlsoap.org/soap/http" />
-    	<operation name="process">
+    	<operation name="getTipo">
     		<soap:operation
-    			soapAction="http://travel/process" />
+    			soapAction="http://empleado/process" />
     		<input>
     			<soap:body use="literal" />
     		</input>
@@ -101,9 +91,9 @@
      SERVICE DEFINITION - A service groups a set of ports into
      a service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <service name="travelService">
-    	<port name="travelPort" binding="trv:travelBinding">
-    		<soap:address location="http://localhost:8080/travel" />
+    <service name="empleadoService">
+    	<port name="empleadoPort" binding="tns:empleadoBinding">
+    		<soap:address location="http://localhost:8080/ode/processes/empleado" />
     	</port>
     </service>
 </definitions>

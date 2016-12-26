@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:empleado="http://empleado" xmlns:viaje="http://viaje">
+  <process name="empleado:empleado">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="empleado:empleadoService" port="empleadoPort"/>
+    </provide>
+  </process>
+  <process name="viaje:viaje">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="viaje:viajeService" port="viajePort"/>
+    </provide>
+    <invoke partnerLink="empleado">
+      <service name="empleado:empleadoService" port="empleadoPort"/>
+    </invoke>
+  </process>
+</deploy>

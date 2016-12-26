@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
-<definitions name="iberia"
-        targetNamespace="http://iberia"
+<definitions name="viaje"
+        targetNamespace="http://viaje"
+        xmlns:tns="http://viaje"
         xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
         xmlns="http://schemas.xmlsoap.org/wsdl/"
         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-        xmlns:ibe="http://iberia">
+        >
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      TYPE DEFINITION - List of types participating in this BPEL process 
@@ -14,26 +15,25 @@
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
     <types>
         <schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
-                targetNamespace="http://iberia" 
+                targetNamespace="http://viaje" 
                 xmlns="http://www.w3.org/2001/XMLSchema">
 
-            <element name="iberiaRequest">
+            <element name="viajeRequest">
                 <complexType>
                     <sequence>
-                    	<element name="name" type="string" />
-                    	<element name="from" type="string"></element>
-                    	<element name="destination" type="string"></element>
-                    	<element name="depart" type="date"></element>
-                    	<element name="return" type="date"></element>
-                    	<element name="type" type="string"></element>
+                    	<element name="nombre" type="string" />
+                    	<element name="origen" type="string"></element>
+                    	<element name="destino" type="string"></element>
+                    	<element name="salida" type="date"></element>
+                    	<element name="llegada" type="date"></element>
                     </sequence>
                 </complexType>
             </element>
 
-            <element name="iberiaResponse">
+            <element name="viajeResponse">
                 <complexType>
                     <sequence>
-                    	<element name="price" type="float" />
+                    	<element name="tipo" type="string"></element>
                     </sequence>
                 </complexType>
             </element>
@@ -45,11 +45,11 @@
      MESSAGE TYPE DEFINITION - Definition of the message types used as 
      part of the port type defintions
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <message name="iberiaRequestMessage">
-        <part name="payload" element="ibe:iberiaRequest"/>
+    <message name="viajeRequestMessage">
+        <part name="payload" element="tns:viajeRequest"/>
     </message>
-    <message name="iberiaResponseMessage">
-        <part name="payload" element="ibe:iberiaResponse"/>
+    <message name="viajeResponseMessage">
+        <part name="payload" element="tns:viajeResponse"/>
     </message>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,18 +57,18 @@
      a logical service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
 
-    <!-- portType implemented by the iberia BPEL process -->
-    <portType name="iberia">
-        <operation name="flightAvailability">
-            <input  message="ibe:iberiaRequestMessage" />
-            <output message="ibe:iberiaResponseMessage"/>
+    <!-- portType implemented by the viaje BPEL process -->
+    <portType name="viaje">
+        <operation name="process">
+            <input  message="tns:viajeRequestMessage" />
+            <output message="tns:viajeResponseMessage"/>
         </operation>
     </portType>   
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      PARTNER LINK TYPE DEFINITION
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <plnk:partnerLinkType name="iberia">
-        <plnk:role name="iberiaProvider" portType="ibe:iberia"/>
+    <plnk:partnerLinkType name="viaje">
+        <plnk:role name="viajeProvider" portType="tns:viaje"/>
     </plnk:partnerLinkType>
     
 
@@ -76,12 +76,12 @@
      BINDING DEFINITION - Defines the message format and protocol details
      for a web service.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <binding name="iberiaBinding" type="ibe:iberia">
+    <binding name="viajeBinding" type="tns:viaje">
     	<soap:binding style="document"
     		transport="http://schemas.xmlsoap.org/soap/http" />
-    	<operation name="flightAvailability">
+    	<operation name="process">
     		<soap:operation
-    			soapAction="http://iberia/process" />
+    			soapAction="http://viaje/process" />
     		<input>
     			<soap:body use="literal" />
     		</input>
@@ -95,9 +95,9 @@
      SERVICE DEFINITION - A service groups a set of ports into
      a service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <service name="iberiaService">
-    	<port name="iberiaPort" binding="ibe:iberiaBinding">
-    		<soap:address location="http://localhost:8080/iberia" />
+    <service name="viajeService">
+    	<port name="viajePort" binding="tns:viajeBinding">
+    		<soap:address location="http://localhost:8080/ode/processes/viaje" />
     	</port>
     </service>
 </definitions>
