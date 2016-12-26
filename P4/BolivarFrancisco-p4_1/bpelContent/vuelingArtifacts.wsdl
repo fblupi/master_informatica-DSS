@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<definitions name="travel"
-        targetNamespace="http://travel"
+<definitions name="vueling"
+        targetNamespace="http://vueling"
         xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
         xmlns="http://schemas.xmlsoap.org/wsdl/"
         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-        xmlns:trv="http://travel">
+        xmlns:vue="http://vueling">
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      TYPE DEFINITION - List of types participating in this BPEL process 
@@ -14,10 +14,10 @@
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
     <types>
         <schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
-                targetNamespace="http://travel" 
+                targetNamespace="http://vueling" 
                 xmlns="http://www.w3.org/2001/XMLSchema">
 
-            <element name="travelRequest">
+            <element name="vuelingRequest">
                 <complexType>
                     <sequence>
                     	<element name="name" type="string" />
@@ -25,21 +25,15 @@
                     	<element name="destination" type="string"></element>
                     	<element name="depart" type="date"></element>
                     	<element name="return" type="date"></element>
+                    	<element name="type" type="string"></element>
                     </sequence>
                 </complexType>
             </element>
 
-            <element name="travelResponse">
+            <element name="vuelingResponse">
                 <complexType>
                     <sequence>
-                    	<element name="name" type="string" />
-                    	<element name="from" type="string"></element>
-                    	<element name="destination" type="string"></element>
-                    	<element name="depart" type="dateTime"></element>
-                    	<element name="return" type="dateTime"></element>
-                    	<element name="price" type="float"></element>
-                        <element name="type" type="string"></element>
-                        <element name="airline" type="string"></element>
+                    	<element name="price" type="float" />
                     </sequence>
                 </complexType>
             </element>
@@ -51,11 +45,11 @@
      MESSAGE TYPE DEFINITION - Definition of the message types used as 
      part of the port type defintions
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <message name="travelRequestMessage">
-        <part name="payload" element="trv:travelRequest"/>
+    <message name="vuelingRequestMessage">
+        <part name="payload" element="vue:vuelingRequest"/>
     </message>
-    <message name="travelResponseMessage">
-        <part name="payload" element="trv:travelResponse"/>
+    <message name="vuelingResponseMessage">
+        <part name="payload" element="vue:vuelingResponse"/>
     </message>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,18 +57,18 @@
      a logical service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
 
-    <!-- portType implemented by the travel BPEL process -->
-    <portType name="travel">
-        <operation name="process">
-            <input  message="trv:travelRequestMessage" />
-            <output message="trv:travelResponseMessage"/>
+    <!-- portType implemented by the vueling BPEL process -->
+    <portType name="vueling">
+        <operation name="flightAvailability">
+            <input  message="vue:vuelingRequestMessage" />
+            <output message="vue:vuelingResponseMessage"/>
         </operation>
     </portType>   
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      PARTNER LINK TYPE DEFINITION
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <plnk:partnerLinkType name="travel">
-        <plnk:role name="travelProvider" portType="trv:travel"/>
+    <plnk:partnerLinkType name="vueling">
+        <plnk:role name="vuelingProvider" portType="vue:vueling"/>
     </plnk:partnerLinkType>
     
 
@@ -82,12 +76,12 @@
      BINDING DEFINITION - Defines the message format and protocol details
      for a web service.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <binding name="travelBinding" type="trv:travel">
+    <binding name="vuelingBinding" type="vue:vueling">
     	<soap:binding style="document"
     		transport="http://schemas.xmlsoap.org/soap/http" />
-    	<operation name="process">
+    	<operation name="flightAvailability">
     		<soap:operation
-    			soapAction="http://travel/process" />
+    			soapAction="http://vueling/process" />
     		<input>
     			<soap:body use="literal" />
     		</input>
@@ -101,9 +95,9 @@
      SERVICE DEFINITION - A service groups a set of ports into
      a service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <service name="travelService">
-    	<port name="travelPort" binding="trv:travelBinding">
-    		<soap:address location="http://localhost:8080/travel" />
+    <service name="vuelingService">
+    	<port name="vuelingPort" binding="vue:vuelingBinding">
+    		<soap:address location="http://localhost:8080/vueling" />
     	</port>
     </service>
 </definitions>
