@@ -5,9 +5,11 @@
          suppressJoinFailure="yes"
          xmlns:tns="http://viaje"
          xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
-         xmlns:emp="http://empleado">
+         xmlns:emp="http://empleado" xmlns:ibe="http://iberi" xmlns:vue="http://vueling">
 
     <!-- Import the client WSDL -->
+    <bpel:import namespace="http://vueling" location="vuelingArtifacts.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+    <bpel:import namespace="http://iberi" location="iberiaArtifacts.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
     <bpel:import namespace="http://empleado" location="empleadoArtifacts.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
     <bpel:import location="viajeArtifacts.wsdl" namespace="http://viaje" 
 	        importType="http://schemas.xmlsoap.org/wsdl/" />
@@ -23,6 +25,9 @@
                      myRole="viajeProvider"
                      />
         <bpel:partnerLink name="empleado" partnerLinkType="emp:empleado" partnerRole="empleadoProvider"></bpel:partnerLink>
+        
+        <bpel:partnerLink name="iberia" partnerLinkType="ibe:iberia" partnerRole="iberiaProvider"></bpel:partnerLink>
+        <bpel:partnerLink name="vueling" partnerLinkType="vue:vueling" partnerRole="vuelingProvider"></bpel:partnerLink>
     </bpel:partnerLinks>
   
     <!-- ================================================================= -->         
@@ -44,6 +49,10 @@
         
         <bpel:variable name="empleadoResponse" messageType="emp:empleadoResponseMessage"></bpel:variable>
         <bpel:variable name="empleadoRequest" messageType="emp:empleadoRequestMessage"></bpel:variable>
+        <bpel:variable name="iberiaResponse" messageType="ibe:iberiaResponseMessage"></bpel:variable>
+        <bpel:variable name="iberiaRequest" messageType="ibe:iberiaRequestMessage"></bpel:variable>
+        <bpel:variable name="vuelingResponse" messageType="vue:vuelingResponseMessage"></bpel:variable>
+        <bpel:variable name="vuelingRequest" messageType="vue:vuelingRequestMessage"></bpel:variable>
     </bpel:variables>
 
     <!-- ================================================================= -->         
@@ -62,7 +71,7 @@
                  createInstance="yes"/>
         
         <!-- Generate reply to synchronous request -->
-        <bpel:assign validate="no" name="fromInputToEmpleado">
+        <bpel:assign validate="no" name="toEmpleado">
             
             
             <bpel:copy>
@@ -83,25 +92,250 @@
         </bpel:assign>
         <bpel:invoke name="empleado" partnerLink="empleado" operation="getTipo" portType="emp:empleado" inputVariable="empleadoRequest" outputVariable="empleadoResponse">
         </bpel:invoke>
-        <bpel:assign validate="no" name="fromEmpleadoToOutput">
+        <bpel:assign validate="no" name="toIberia">
             
             
             <bpel:copy>
-                <bpel:from><bpel:literal><tns:viajeResponse xmlns:tns="http://viaje" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <bpel:from><bpel:literal><tns:iberiaRequest xmlns:tns="http://iberi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <tns:origen>tns:origen</tns:origen>
+  <tns:destino>tns:destino</tns:destino>
+  <tns:salida>2001-01-01</tns:salida>
+  <tns:llegada>2001-01-01</tns:llegada>
   <tns:tipo>tns:tipo</tns:tipo>
-</tns:viajeResponse>
+</tns:iberiaRequest>
 </bpel:literal></bpel:from>
-                <bpel:to variable="output" part="payload"></bpel:to>
+                <bpel:to variable="iberiaRequest" part="payload"></bpel:to>
+            </bpel:copy>
+            
+            <bpel:copy>
+                <bpel:from part="payload" variable="empleadoResponse">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[emp:tipo]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="iberiaRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[ibe:tipo]]>
+                    </bpel:query>
+                </bpel:to>
+            </bpel:copy>
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:origen]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="iberiaRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[ibe:origen]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:destino]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="iberiaRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[ibe:destino]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:salida]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="iberiaRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[ibe:salida]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:llegada]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="iberiaRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[ibe:llegada]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+        </bpel:assign>
+        <bpel:invoke name="iberia" partnerLink="iberia" operation="getPrecio" portType="ibe:iberia" inputVariable="iberiaRequest" outputVariable="iberiaResponse"></bpel:invoke>
+        <bpel:assign validate="no" name="toVueling">
+            <bpel:copy>
+                <bpel:from><bpel:literal><tns:vuelingRequest xmlns:tns="http://vueling" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <tns:origen>tns:origen</tns:origen>
+  <tns:destino>tns:destino</tns:destino>
+  <tns:salida>2001-01-01</tns:salida>
+  <tns:llegada>2001-01-01</tns:llegada>
+  <tns:tipo>tns:tipo</tns:tipo>
+</tns:vuelingRequest>
+</bpel:literal></bpel:from>
+                <bpel:to variable="vuelingRequest" part="payload"></bpel:to>
             </bpel:copy>
             <bpel:copy>
                 <bpel:from part="payload" variable="empleadoResponse">
                     <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[emp:tipo]]></bpel:query>
                 </bpel:from>
-                <bpel:to part="payload" variable="output">
-                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:tipo]]></bpel:query>
+                <bpel:to part="payload" variable="vuelingRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[vue:tipo]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:origen]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="vuelingRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[vue:origen]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:destino]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="vuelingRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[vue:destino]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:salida]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="vuelingRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[vue:salida]]></bpel:query>
+                </bpel:to>
+            </bpel:copy>
+            <bpel:copy>
+                <bpel:from part="payload" variable="input">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:llegada]]></bpel:query>
+                </bpel:from>
+                <bpel:to part="payload" variable="vuelingRequest">
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[vue:llegada]]></bpel:query>
                 </bpel:to>
             </bpel:copy>
         </bpel:assign>
+        <bpel:invoke name="vueling" partnerLink="vueling" operation="getPrecio" portType="vue:vueling" inputVariable="vuelingRequest" outputVariable="vuelingResponse"></bpel:invoke>
+        <bpel:if name="iberiaMasBaratoQueVueling">
+            <bpel:condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[$iberiaResponse.payload/ibe:precio < $vuelingResponse.payload/vue:precio]]></bpel:condition>
+            <bpel:assign validate="no" name="toOuputIberia">
+                <bpel:copy>
+                    <bpel:from><bpel:literal xml:space="preserve"><tns:viajeResponse xmlns:tns="http://viaje" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <tns:origen>tns:origen</tns:origen>
+  <tns:destino>tns:destino</tns:destino>
+  <tns:salida>2001-01-01</tns:salida>
+  <tns:llegada>2001-01-01</tns:llegada>
+  <tns:aerolinea>iberia</tns:aerolinea>
+  <tns:tipo>tns:tipo</tns:tipo>
+  <tns:precio>0.0</tns:precio>
+</tns:viajeResponse>
+</bpel:literal></bpel:from>
+                    <bpel:to variable="output" part="payload"></bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="payload" variable="input">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:origen]]></bpel:query>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:origen]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="payload" variable="input">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:destino]]></bpel:query>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:destino]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="payload" variable="input">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:salida]]></bpel:query>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:salida]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="payload" variable="input">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:llegada]]></bpel:query>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:llegada]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="payload" variable="empleadoResponse">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[emp:tipo]]></bpel:query>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:tipo]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+                <bpel:copy>
+                    <bpel:from part="payload" variable="iberiaResponse">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[ibe:precio]]></bpel:query>
+                    </bpel:from>
+                    <bpel:to part="payload" variable="output">
+                        <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:precio]]></bpel:query>
+                    </bpel:to>
+                </bpel:copy>
+            </bpel:assign>
+            <bpel:else>
+                <bpel:assign validate="no" name="toOutputVueling">
+                    <bpel:copy>
+                        <bpel:from><bpel:literal xml:space="preserve"><tns:viajeResponse xmlns:tns="http://viaje" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <tns:origen>tns:origen</tns:origen>
+  <tns:destino>tns:destino</tns:destino>
+  <tns:salida>2001-01-01</tns:salida>
+  <tns:llegada>2001-01-01</tns:llegada>
+  <tns:aerolinea>vueling</tns:aerolinea>
+  <tns:tipo>tns:tipo</tns:tipo>
+  <tns:precio>0.0</tns:precio>
+</tns:viajeResponse>
+</bpel:literal></bpel:from>
+                        <bpel:to variable="output" part="payload"></bpel:to>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from part="payload" variable="input">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:origen]]></bpel:query>
+                        </bpel:from>
+                        <bpel:to part="payload" variable="output">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:origen]]></bpel:query>
+                        </bpel:to>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from part="payload" variable="input">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:destino]]></bpel:query>
+                        </bpel:from>
+                        <bpel:to part="payload" variable="output">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:destino]]></bpel:query>
+                        </bpel:to>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from part="payload" variable="input">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:salida]]></bpel:query>
+                        </bpel:from>
+                        <bpel:to part="payload" variable="output">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:salida]]></bpel:query>
+                        </bpel:to>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from part="payload" variable="input">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:llegada]]></bpel:query>
+                        </bpel:from>
+                        <bpel:to part="payload" variable="output">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:llegada]]></bpel:query>
+                        </bpel:to>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from part="payload" variable="empleadoResponse">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[emp:tipo]]></bpel:query>
+                        </bpel:from>
+                        <bpel:to part="payload" variable="output">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:tipo]]></bpel:query>
+                        </bpel:to>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from part="payload" variable="vuelingResponse">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[vue:precio]]></bpel:query>
+                        </bpel:from>
+                        <bpel:to part="payload" variable="output">
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:precio]]></bpel:query>
+                        </bpel:to>
+                    </bpel:copy>
+                </bpel:assign>
+            </bpel:else>
+        </bpel:if>
         <bpel:reply name="replyOutput" 
                partnerLink="client"
                portType="tns:viaje"

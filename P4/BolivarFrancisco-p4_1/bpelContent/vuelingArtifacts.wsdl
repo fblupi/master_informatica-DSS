@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<definitions name="viaje"
-        targetNamespace="http://viaje"
-        xmlns:tns="http://viaje"
+<definitions name="vueling"
+        targetNamespace="http://vueling"
+        xmlns:tns="http://vueling"
         xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
         xmlns="http://schemas.xmlsoap.org/wsdl/"
         xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
@@ -15,32 +15,25 @@
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
     <types>
         <schema attributeFormDefault="unqualified" elementFormDefault="qualified" 
-                targetNamespace="http://viaje" 
+                targetNamespace="http://vueling" 
                 xmlns="http://www.w3.org/2001/XMLSchema">
 
-            <element name="viajeRequest">
+            <element name="vuelingRequest">
                 <complexType>
                     <sequence>
-                    	<element name="nombre" type="string" />
-                    	<element name="origen" type="string"></element>
+                    	<element name="origen" type="string" />
                     	<element name="destino" type="string"></element>
                     	<element name="salida" type="date"></element>
                     	<element name="llegada" type="date"></element>
+                    	<element name="tipo" type="string"></element>
                     </sequence>
                 </complexType>
             </element>
 
-            <element name="viajeResponse">
+            <element name="vuelingResponse">
                 <complexType>
                     <sequence>
-                    	<element name="origen" type="string"></element>
-                    	<element name="destino" type="string"></element>
-                    	<element name="salida" type="date"></element>
-                    	<element name="llegada" type="date"></element>
-                        <element name="aerolinea" type="string"></element>
-                        <element name="tipo" type="string"></element>
-                        <element name="precio" type="float"></element>
-                        
+                        <element name="precio" type="float"/>
                     </sequence>
                 </complexType>
             </element>
@@ -52,11 +45,11 @@
      MESSAGE TYPE DEFINITION - Definition of the message types used as 
      part of the port type defintions
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <message name="viajeRequestMessage">
-        <part name="payload" element="tns:viajeRequest"/>
+    <message name="vuelingRequestMessage">
+        <part name="payload" element="tns:vuelingRequest"/>
     </message>
-    <message name="viajeResponseMessage">
-        <part name="payload" element="tns:viajeResponse"/>
+    <message name="vuelingResponseMessage">
+        <part name="payload" element="tns:vuelingResponse"/>
     </message>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,18 +57,18 @@
      a logical service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
 
-    <!-- portType implemented by the viaje BPEL process -->
-    <portType name="viaje">
-        <operation name="process">
-            <input  message="tns:viajeRequestMessage" />
-            <output message="tns:viajeResponseMessage"/>
+    <!-- portType implemented by the vueling BPEL process -->
+    <portType name="vueling">
+        <operation name="getPrecio">
+            <input  message="tns:vuelingRequestMessage" />
+            <output message="tns:vuelingResponseMessage"/>
         </operation>
     </portType>   
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      PARTNER LINK TYPE DEFINITION
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
-    <plnk:partnerLinkType name="viaje">
-        <plnk:role name="viajeProvider" portType="tns:viaje"/>
+    <plnk:partnerLinkType name="vueling">
+        <plnk:role name="vuelingProvider" portType="tns:vueling"/>
     </plnk:partnerLinkType>
     
 
@@ -83,12 +76,12 @@
      BINDING DEFINITION - Defines the message format and protocol details
      for a web service.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <binding name="viajeBinding" type="tns:viaje">
+    <binding name="vuelingBinding" type="tns:vueling">
     	<soap:binding style="document"
     		transport="http://schemas.xmlsoap.org/soap/http" />
-    	<operation name="process">
+    	<operation name="getPrecio">
     		<soap:operation
-    			soapAction="http://viaje/process" />
+    			soapAction="http://vueling/process" />
     		<input>
     			<soap:body use="literal" />
     		</input>
@@ -102,9 +95,9 @@
      SERVICE DEFINITION - A service groups a set of ports into
      a service unit.
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <service name="viajeService">
-    	<port name="viajePort" binding="tns:viajeBinding">
-    		<soap:address location="http://localhost:8080/ode/processes/viaje" />
+    <service name="vuelingService">
+    	<port name="vuelingPort" binding="tns:vuelingBinding">
+    		<soap:address location="http://localhost:8080/ode/processes/vueling" />
     	</port>
     </service>
 </definitions>
