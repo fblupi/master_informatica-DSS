@@ -327,7 +327,9 @@
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from part="payload" variable="vuelingResponse">
-                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[vue:precio]]></bpel:query>
+                            <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                                <![CDATA[vue:precio]]>
+                            </bpel:query>
                         </bpel:from>
                         <bpel:to part="payload" variable="output">
                             <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:precio]]></bpel:query>

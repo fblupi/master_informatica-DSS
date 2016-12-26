@@ -22,14 +22,38 @@
   </extensions>
   <extensions>
     <extendedObject href="vueling.bpel#/"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1482782419035"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1482786160869"/>
   </extensions>
   <extensions>
     <extendedObject href="vueling.bpel#//@activity/@activities.1"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
   </extensions>
   <extensions>
-    <extendedObject href="vueling.bpel#//@activity/@activities.1/@copy.0"/>
+    <extendedObject href="vueling.bpel#//@activity/@activities.1/@elseIf.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CaseExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="vueling.bpel#//@activity/@activities.1/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="vueling.bpel#//@activity/@activities.1/@elseIf.0/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="vueling.bpel#//@activity/@activities.1/@else/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="vueling.bpel#//@activity/@activities.1/@activity/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="vueling.bpel#//@activity/@activities.1/@elseIf.0/@activity/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="vueling.bpel#//@activity/@activities.1/@else/@activity/@copy.0"/>
     <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
 </extensionmodel:ExtensionMap>

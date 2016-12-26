@@ -22,7 +22,7 @@
   </extensions>
   <extensions>
     <extendedObject href="viaje.bpel#/"/>
-    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1482783144477"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1482785470063"/>
   </extensions>
   <extensions>
     <extendedObject href="viaje.bpel#//@activity/@activities.1"/>
