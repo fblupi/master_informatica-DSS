@@ -1,25 +1,3 @@
-<style>
-  h1 {
-    font-size: 24px !important;
-  }
-
-  h2 {
-    font-size: 20px !important;
-  }
-
-  div {
-    font-size: 10px !important;
-  }
-
-  p {
-    font-size: 11px !important;
-  }
-
-  ul {
-    font-size: 11px !important;
-  }
-</style>
-
 # Práctica 3: Implementación de un servicio CRUD en Java
 
 ## Enunciado
