@@ -101,6 +101,8 @@ Se puede instalar usando el archivo `app-release.apk` (para ello tiene que estar
 
 Para generar el *keystore* (`.jks`) se ha seguido el siguiente [tutorial](http://developer.android.com/studio/publish/app-signing.html?hl=es-419#release-mode). Con este *keystore* se puede generar el `.apk` siguiendo [estas instrucciones](http://developer.android.com/studio/publish/app-signing.html?hl=es-419#sign-auto). No se ha subido el *keystore* generado por los problemas de seguridad consecuentes.
 
+El `.apk` generado será compatible con versiones iguales o posteriores al API 17 (Android 4.2 Jelly Bean).
+
 ## Tests realizados
 
 Se ha probado la aplicación tanto en *smartphones* como *tablets* usando el software Genymotion para su creación virtual dentro de un ordenador.
