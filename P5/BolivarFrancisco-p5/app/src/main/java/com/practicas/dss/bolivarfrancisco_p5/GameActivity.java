@@ -24,7 +24,9 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import java.util.Date;
 
 public class GameActivity extends Activity {
+
     private static final long INTERVALO_CLICK = 1000;
+    private long mLastClickTime = 0; // Variable para controlar el tiempo entre pulsaciones
 
     private DBHelperResults db = DBHelperResults.getInstance(this); // Base de datos
 
@@ -49,7 +51,6 @@ public class GameActivity extends Activity {
     private int spAciertoId; // Identificador de sonido de acierto
     private int spFalloId; // Identificador de sonido de fallo
     private MediaPlayer mediaPlayer;
-    private long mLastClickTime = 0; // Variable para controlar el tiempo entre pulsaciones
 
     // Método llamado al crear la actividad
     @Override

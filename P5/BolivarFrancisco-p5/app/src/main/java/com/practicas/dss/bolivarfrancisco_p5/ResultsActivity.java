@@ -12,7 +12,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 public class ResultsActivity extends Activity {
 
-    //private LinearLayout lista;
     private Button btn;
     private BaseAdapter adaptador;
     private DBHelperResults db = DBHelperResults.getInstance(this); // Base de datos

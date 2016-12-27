@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Preguntas {
+
     private static List<Pregunta> vectorPreguntas;
 
     public Preguntas() { }
