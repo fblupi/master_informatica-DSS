@@ -92,3 +92,17 @@ Se presentan dos modos de juego:
 En ambos modos se puede salir en cualquier momento.
 
 Los resultados obtenidos se almacenan en una base de datos para poder ser consultados con posterioridad.
+
+## Instalación
+
+Se puede instalar usando el archivo `app-release.apk` (para ello tiene que estar habilitada la configuración de permitir instalar aplicaciones de orígines desconocidos en el smartphone).
+
+## Generación de `.apk`
+
+Para generar el *keystore* (`.jks`) se ha seguido el siguiente [tutorial](http://developer.android.com/studio/publish/app-signing.html?hl=es-419#release-mode). Con este *keystore* se puede generar el `.apk` siguiendo [estas instrucciones](http://developer.android.com/studio/publish/app-signing.html?hl=es-419#sign-auto). No se ha subido el *keystore* generado por los problemas de seguridad consecuentes.
+
+## Tests realizados
+
+Se ha probado la aplicación tanto en *smartphones* como *tablets* usando el software Genymotion para su creación virtual dentro de un ordenador.
+
+Asímismo se ha probado en un dispositivo real (Motorola Moto G2) verificando su correcto funcionamiento.
